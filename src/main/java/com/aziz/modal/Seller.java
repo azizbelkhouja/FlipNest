@@ -1,5 +1,6 @@
 package com.aziz.modal;
 
+import com.aziz.domain.AccountStatus;
 import com.aziz.domain.USER_ROLE;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,7 +36,7 @@ public class Seller {
 
     private String fiscalCode;
 
-    private USER_ROLE role;
+    private USER_ROLE role = USER_ROLE.ROLE_SELLER;
 
     private boolean isEmailVerified = false;
 
