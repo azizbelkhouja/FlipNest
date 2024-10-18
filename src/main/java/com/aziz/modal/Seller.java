@@ -1,9 +1,7 @@
 package com.aziz.modal;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.aziz.domain.USER_ROLE;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -17,4 +15,29 @@ public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String sellerName;
+
+    private String mobile;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+    private String password;
+
+    @Embedded
+    private BusinessDetails businessDetails = new BusinessDetails();
+
+    @Embedded
+    private BankDetails bankDetails = new BankDetails();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address pickupaddress = new Address();
+
+    private String fiscalCode;
+
+    private USER_ROLE role;
+
+    private boolean isEmailVerified = false;
+
+    private AccountStatus accountStatus = AccountStatus.PENDING_VERIFICATION;
 }
