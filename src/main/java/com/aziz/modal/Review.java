@@ -2,6 +2,7 @@ package com.aziz.modal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String reviewText;
@@ -30,11 +31,11 @@ public class Review {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @NotNull
     private Product product;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @NotNull
     private User user;
 
     @Column(nullable = false)
