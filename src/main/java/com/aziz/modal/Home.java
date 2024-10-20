@@ -11,4 +11,6 @@ public class Home {
     private List<HomeCategory> shopByCategory;
     private List<HomeCategory> electronicCategories;
     private List<HomeCategory> dealsCategories;
+
+    private List<Deal> deals;
 }
