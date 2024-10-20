@@ -1,10 +1,8 @@
 package com.aziz.modal;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -19,5 +17,19 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonIgnore
+    @ManyToOne
+    private Order order;
 
+    @ManyToOne
+    private Product product;
+
+    private String size;
+
+    private int quantity;
+
+    private Integer mrpPrice;
+
+    private Long userId;
+    
 }
