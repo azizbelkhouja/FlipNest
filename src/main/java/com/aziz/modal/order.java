@@ -1,5 +1,6 @@
 package com.aziz.modal;
 
+import com.aziz.domain.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
