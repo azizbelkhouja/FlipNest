@@ -1,5 +1,6 @@
 package com.aziz.modal;
 
+import com.aziz.domain.HomeCategorySection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
