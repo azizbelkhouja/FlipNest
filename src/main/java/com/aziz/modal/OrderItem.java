@@ -31,5 +31,5 @@ public class OrderItem {
     private Integer mrpPrice;
 
     private Long userId;
-    
+
 }
