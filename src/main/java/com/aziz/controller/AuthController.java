@@ -1,5 +1,6 @@
 package com.aziz.controller;
 
+import com.aziz.modal.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
