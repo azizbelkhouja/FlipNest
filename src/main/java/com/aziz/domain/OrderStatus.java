@@ -1,4 +1,4 @@
-package com.aziz.modal;
+package com.aziz.domain;
 
 public enum OrderStatus {
 
