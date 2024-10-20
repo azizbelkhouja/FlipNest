@@ -7,9 +7,9 @@ import lombok.Data;
 public class paymentDetails {
 
     private String paymentId;
-    private String stripePaymentLinkId;
-    private String stripePaymentlinkReferenceId;
-    private String stripePaymentLinkStatus;
-    private String stripePaymentIdZWSP;
+    private String paypalPaymentLinkId;
+    private String paypalPaymentlinkReferenceId;
+    private String paypalPaymentLinkStatus;
+    private String paypalPaymentIdZWSP;
     private PaymentStatus status;
 }
