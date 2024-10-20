@@ -8,7 +8,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class SellerReport {
 
     @Id
@@ -33,5 +32,5 @@ public class SellerReport {
     private Integer canceledOrders = 0;
 
     private Integer totalTransactions = 0;
-    
+
 }
