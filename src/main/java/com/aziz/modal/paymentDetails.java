@@ -1,7 +1,9 @@
 package com.aziz.modal;
 
 import com.aziz.domain.PaymentStatus;
+import lombok.Data;
 
+@Data
 public class paymentDetails {
 
     private String paymentId;
