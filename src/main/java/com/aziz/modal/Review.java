@@ -20,10 +20,8 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
     private String reviewText;
 
-    @Column(nullable = false)
     private double rating;
 
     @ElementCollection
