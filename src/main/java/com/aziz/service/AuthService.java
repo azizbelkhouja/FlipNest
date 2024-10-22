@@ -1,4 +1,8 @@
 package com.aziz.service;
 
-public class AuthService {
+import com.aziz.response.SignupRequest;
+
+public interface AuthService {
+
+    String createUser(SignupRequest req);
 }
