@@ -1,7 +1,9 @@
 package com.aziz.service.impl;
 
 import com.aziz.domain.USER_ROLE;
+import com.aziz.modal.Cart;
 import com.aziz.modal.User;
+import com.aziz.repository.CartREpository;
 import com.aziz.repository.UserRepository;
 import com.aziz.response.SignupRequest;
 import com.aziz.service.AuthService;
@@ -15,6 +17,7 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CartREpository cartRepository;
 
     @Override
     public String createUser(SignupRequest req) {
@@ -30,6 +33,10 @@ public class AuthServiceImpl implements AuthService {
             createdUser.setPassword(passwordEncoder.encode(req.getOtp()));
 
             user = userRepository.save(createdUser);
+
+            Cart cart = new Cart();
+            cart.setUser(user);
+            cartRepository.save(cart);
         }
         return "";
     }
