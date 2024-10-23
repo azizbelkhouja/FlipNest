@@ -23,6 +23,7 @@ public class JwtProvider {
         Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
         String roles = populateAuthorities(authorities);
 
+        String jwt;
         return jwt = Jwts.builder()
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime()+84600000))
@@ -34,11 +35,20 @@ public class JwtProvider {
 
     public String getEmailFromJwtToken(String jwt) {
 
-        jwt = jwt.substring(7);
+        // Remove "Bearer " prefix if present
+        if (jwt.startsWith("Bearer ")) {
+            jwt = jwt.substring(7);
+        }
 
-        return String.valueOf(claims.get("email"));
-
+        // Parse the JWT and extract the claims
+        return Jwts.parserBuilder()
+                .setSigningKey(key)  // Use the key to validate the signature
+                .build()
+                .parseClaimsJws(jwt)
+                .getBody()  // Get the claims body
+                .get("email", String.class);  // Extract the email claim
     }
+
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
 
