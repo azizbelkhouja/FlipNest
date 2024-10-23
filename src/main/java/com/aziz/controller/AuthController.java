@@ -1,8 +1,11 @@
 package com.aziz.controller;
 
+import com.aziz.domain.USER_ROLE;
 import com.aziz.modal.User;
 import com.aziz.repository.UserRepository;
+import com.aziz.response.AuthResponse;
 import com.aziz.response.SignupRequest;
+import com.aziz.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,16 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final UserRepository userRepository;
+    private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> createUserHandler(@RequestBody SignupRequest req) {
+    public ResponseEntity<AuthResponse> createUserHandler(@RequestBody SignupRequest req) {
 
-        User user = new User();
-        user.setEmail(req.getEmail());
-        user.setFullName(req.getFullName());
+        String jwt = authService.createUser(req);
 
-        User savedUser = userRepository.save(user);
+        AuthResponse res = new AuthResponse();
+        res.setJwt(jwt);
+        res.setMessage("registered successfully");
+        res.setRole(USER_ROLE.ROLE_CUSTOMER);
 
-        return ResponseEntity.ok(savedUser);
+        return ResponseEntity.ok(res);
     }
 }
