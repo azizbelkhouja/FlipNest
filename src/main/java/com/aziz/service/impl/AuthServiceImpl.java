@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
-    
+
     @Override
     public String createUser(SignupRequest req) {
         return "";
