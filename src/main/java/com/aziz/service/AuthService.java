@@ -4,5 +4,5 @@ import com.aziz.response.SignupRequest;
 
 public interface AuthService {
 
-    String createUser(SignupRequest req);
+    String createUser(SignupRequest req) throws Exception;
 }

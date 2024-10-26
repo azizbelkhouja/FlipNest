@@ -4,8 +4,10 @@ import com.aziz.config.JwtProvider;
 import com.aziz.domain.USER_ROLE;
 import com.aziz.modal.Cart;
 import com.aziz.modal.User;
+import com.aziz.modal.VerificationCode;
 import com.aziz.repository.CartRepository;
 import com.aziz.repository.UserRepository;
+import com.aziz.repository.VerificationCodeRepository;
 import com.aziz.response.SignupRequest;
 import com.aziz.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +30,16 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final CartRepository cartRepository;
     private final JwtProvider jwtProvider;
+    private final VerificationCodeRepository verificationCodeRepository;
 
     @Override
-    public String createUser(SignupRequest req) {
+    public String createUser(SignupRequest req) throws Exception {
+
+        VerificationCode verificationCode = verificationCodeRepository.findByEmail(req.getEmail());
+
+        if (verificationCode == null && !verificationCode.getOtp().equals(req.getOtp())) {
+            throw new Exception("Wrong Otp");
+        }
 
         User user = userRepository.findByEmail(req.getEmail());
 
