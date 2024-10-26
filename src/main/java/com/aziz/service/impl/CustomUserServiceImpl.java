@@ -1,28 +1,40 @@
 package com.aziz.service.impl;
 
 import com.aziz.domain.USER_ROLE;
+import com.aziz.modal.Seller;
 import com.aziz.modal.User;
+import com.aziz.repository.SellerRepository;
 import com.aziz.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
+@Service
 public class CustomUserServiceImpl implements UserDetailsService {
 
 
     private UserRepository userRepository;
+    private final SellerRepository sellerRepository;
     private static final String SELLER_PREFIX = "Seller_";
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         if (username.startsWith(SELLER_PREFIX)) {
+            String actualUsername = username.substring(SELLER_PREFIX.length());
+            Seller seller = sellerRepository.findByEmail(actualUsername);
 
+            if (seller != null) {
+                return buildUserDetails(seller.getEmail(), seller.getPassword(), seller.getRole());
+            }
         } else {
             User user = userRepository.findByEmail(username);
 

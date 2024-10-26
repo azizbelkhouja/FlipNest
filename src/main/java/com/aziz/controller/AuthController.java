@@ -28,7 +28,7 @@ public class AuthController {
 
         AuthResponse res = new AuthResponse();
         res.setJwt(jwt);
-        res.setMessage("registered successfully");
+        res.setMessage("Registered Successfully");
         res.setRole(USER_ROLE.ROLE_CUSTOMER);
 
         return ResponseEntity.ok(res);
