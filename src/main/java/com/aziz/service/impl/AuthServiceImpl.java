@@ -37,7 +37,7 @@ public class AuthServiceImpl implements AuthService {
 
         VerificationCode verificationCode = verificationCodeRepository.findByEmail(req.getEmail());
 
-        if (verificationCode == null && !verificationCode.getOtp().equals(req.getOtp())) {
+        if (verificationCode == null || !verificationCode.getOtp().equals(req.getOtp())) {
             throw new Exception("Wrong Otp");
         }
 
