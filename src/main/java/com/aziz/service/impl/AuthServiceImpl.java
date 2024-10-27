@@ -10,6 +10,8 @@ import com.aziz.repository.UserRepository;
 import com.aziz.repository.VerificationCodeRepository;
 import com.aziz.response.SignupRequest;
 import com.aziz.service.AuthService;
+import com.aziz.service.EmailService;
+import com.aziz.utils.OtpUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -31,6 +33,7 @@ public class AuthServiceImpl implements AuthService {
     private final CartRepository cartRepository;
     private final JwtProvider jwtProvider;
     private final VerificationCodeRepository verificationCodeRepository;
+    private final EmailService emailService;
 
     @Override
     public void sendOtp(String email) throws Exception {
@@ -52,7 +55,16 @@ public class AuthServiceImpl implements AuthService {
             verificationCodeRepository.delete(isExist);
         }
 
-        String otp =
+        String otp = OtpUtil.generateOtp();
+
+        VerificationCode verificationCode = new VerificationCode();
+        verificationCode.setOtp(otp);
+        verificationCode.setEmail(email);
+        verificationCodeRepository.save(verificationCode);
+
+        String subject = "UniEssentials Login/Signup Code";
+        String text = "Your Code is - ";
+        emailService.sendVerificationOtpEmail(email, otp, subject, text);
 
     }
 
