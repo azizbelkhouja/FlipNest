@@ -21,7 +21,7 @@ import java.util.List;
 public class CustomUserServiceImpl implements UserDetailsService {
 
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     private final SellerRepository sellerRepository;
     private static final String SELLER_PREFIX = "Seller_";
 
