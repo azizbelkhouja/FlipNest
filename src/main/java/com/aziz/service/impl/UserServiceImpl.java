@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
             throw new Exception("User with email : " + email + " not found");
         }
 
-        return null;
+        return this.findUserByEmail(email);
     }
 
     @Override
@@ -37,6 +37,6 @@ public class UserServiceImpl implements UserService {
             throw new Exception("User with email : " + email + " not found");
         }
 
-        return null;
+        return user;
     }
 }
