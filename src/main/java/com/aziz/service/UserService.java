@@ -4,6 +4,6 @@ import com.aziz.modal.User;
 
 public interface UserService {
 
-    User findUserByJwtToken(String jwt);
-    User findUserByEmail(String email);
+    User findUserByJwtToken(String jwt) throws Exception;
+    User findUserByEmail(String email) throws Exception;
 }
