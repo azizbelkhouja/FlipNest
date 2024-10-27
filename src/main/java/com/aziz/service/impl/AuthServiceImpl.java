@@ -8,6 +8,8 @@ import com.aziz.modal.VerificationCode;
 import com.aziz.repository.CartRepository;
 import com.aziz.repository.UserRepository;
 import com.aziz.repository.VerificationCodeRepository;
+import com.aziz.request.LoginRequest;
+import com.aziz.response.AuthResponse;
 import com.aziz.response.SignupRequest;
 import com.aziz.service.AuthService;
 import com.aziz.service.EmailService;
@@ -63,7 +65,7 @@ public class AuthServiceImpl implements AuthService {
         verificationCodeRepository.save(verificationCode);
 
         String subject = "UniEssentials Login/Signup Code";
-        String text = "Your Code is - ";
+        String text = "Your Code is " + otp;
         emailService.sendVerificationOtpEmail(email, otp, subject, text);
 
     }
@@ -100,5 +102,10 @@ public class AuthServiceImpl implements AuthService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(req.getEmail(), null, authorities);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return jwtProvider.generateToken(authentication);
+    }
+
+    @Override
+    public AuthResponse signin(LoginRequest req) {
+        return null;
     }
 }

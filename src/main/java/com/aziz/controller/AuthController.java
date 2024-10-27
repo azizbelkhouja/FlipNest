@@ -2,7 +2,9 @@ package com.aziz.controller;
 
 import com.aziz.domain.USER_ROLE;
 import com.aziz.modal.User;
+import com.aziz.modal.VerificationCode;
 import com.aziz.repository.UserRepository;
+import com.aziz.response.ApiResponse;
 import com.aziz.response.AuthResponse;
 import com.aziz.response.SignupRequest;
 import com.aziz.service.AuthService;
@@ -30,6 +32,17 @@ public class AuthController {
         res.setJwt(jwt);
         res.setMessage("Registered Successfully");
         res.setRole(USER_ROLE.ROLE_CUSTOMER);
+
+        return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/sent/login-signup-otp")
+    public ResponseEntity<ApiResponse> sentOtpHandler(@RequestBody VerificationCode req) throws Exception {
+
+        authService.sendOtp(req.getEmail());
+
+        ApiResponse res = new ApiResponse();
+        res.setMessage("Code Sent Successfully");
 
         return ResponseEntity.ok(res);
     }
