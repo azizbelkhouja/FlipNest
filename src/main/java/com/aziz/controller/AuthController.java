@@ -4,6 +4,7 @@ import com.aziz.domain.USER_ROLE;
 import com.aziz.modal.User;
 import com.aziz.modal.VerificationCode;
 import com.aziz.repository.UserRepository;
+import com.aziz.request.LoginRequest;
 import com.aziz.response.ApiResponse;
 import com.aziz.response.AuthResponse;
 import com.aziz.response.SignupRequest;
@@ -45,5 +46,13 @@ public class AuthController {
         res.setMessage("Code Sent Successfully");
 
         return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<AuthResponse> LoginHandler(@RequestBody LoginRequest req) throws Exception {
+
+        AuthResponse authResponse = authService.signin(req);
+
+        return ResponseEntity.ok(authResponse);
     }
 }
