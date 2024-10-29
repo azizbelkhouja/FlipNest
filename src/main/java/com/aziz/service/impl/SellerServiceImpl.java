@@ -51,13 +51,13 @@ public class SellerServiceImpl implements SellerService {
         newSeller.setMobile(seller.getMobile());
         newSeller.setBankDetails(seller.getBankDetails());
         newSeller.setBusinessDetails(seller.getBusinessDetails());
-        
+
         return sellerRepository.save(newSeller);
     }
 
     @Override
-    public Seller getSellerById(Long id) {
-        return null;
+    public Seller getSellerById(Long id) throws Exception {
+        return sellerRepository.findById(id).orElseThrow(() -> new Exception("seller not found with the id " + id));
     }
 
     @Override
