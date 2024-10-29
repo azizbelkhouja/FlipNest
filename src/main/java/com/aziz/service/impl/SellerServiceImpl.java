@@ -74,12 +74,44 @@ public class SellerServiceImpl implements SellerService {
 
     @Override
     public List<Seller> getAllSellers(AccountStatus status) {
-        return List.of();
+
+        return sellerRepository.findByAccountStatus(status);
     }
 
     @Override
-    public Seller updateSeller(Long id, Seller seller) {
-        return null;
+    public Seller updateSeller(Long id, Seller seller) throws Exception {
+
+        Seller existingSeller = this.getSellerById(id);
+
+        if (seller.getSellerName() != null) {
+            existingSeller.setSellerName(seller.getSellerName());
+        }
+
+        if (seller.getMobile() != null) {
+            existingSeller.setMobile(seller.getMobile());
+        }
+
+        if (seller.getEmail() != null) {
+            existingSeller.setEmail(seller.getEmail());
+        }
+
+        if (seller.getBusinessDetails() != null && seller.getBusinessDetails().getBusinessName() != null) {
+            existingSeller.getBusinessDetails().setBusinessName(seller.getBusinessDetails().getBusinessName());
+        }
+
+        if (seller.getBankDetails() != null
+            && seller.getBankDetails().getAccountHolderName() != null
+            && seller.getBankDetails().getIban() != null
+            && seller.getBankDetails().getAccountNumber() != null)
+        {
+            existingSeller.getBankDetails().setAccountNumber(seller.getBankDetails().getAccountNumber());
+            existingSeller.getBankDetails().setAccountHolderName(seller.getBankDetails().getAccountHolderName());
+            existingSeller.getBankDetails().setIban(seller.getBankDetails().getIban());
+        }
+
+        
+
+
     }
 
     @Override
