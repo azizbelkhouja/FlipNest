@@ -3,9 +3,11 @@ package com.aziz.service.impl;
 import com.aziz.config.JwtProvider;
 import com.aziz.domain.USER_ROLE;
 import com.aziz.modal.Cart;
+import com.aziz.modal.Seller;
 import com.aziz.modal.User;
 import com.aziz.modal.VerificationCode;
 import com.aziz.repository.CartRepository;
+import com.aziz.repository.SellerRepository;
 import com.aziz.repository.UserRepository;
 import com.aziz.repository.VerificationCodeRepository;
 import com.aziz.request.LoginRequest;
@@ -40,19 +42,32 @@ public class AuthServiceImpl implements AuthService {
     private final VerificationCodeRepository verificationCodeRepository;
     private final EmailService emailService;
     private final CustomUserServiceImpl customUserServiceImpl;
+    private final SellerRepository sellerRepository;
 
     @Override
-    public void sendOtp(String email) throws Exception {
+    public void sendOtp(String email, USER_ROLE role) throws Exception {
 
         String SIGNING_PREFIX = "signin_";
+//        String SELLER_PREFIX = "Seller_";
 
         if (email.startsWith(SIGNING_PREFIX)) {
             email = email.substring(SIGNING_PREFIX.length());
 
-            User user = userRepository.findByEmail(email);
-            if (user == null) {
-                throw new Exception("No User with this Email");
+            if (role.equals(USER_ROLE.ROLE_SELLER)) {
+
+                Seller seller = sellerRepository.findByEmail(email);
+                if (seller == null) {
+                    throw new Exception("Seller not found");
+                }
             }
+            else {
+                User user = userRepository.findByEmail(email);
+                if (user == null) {
+                    throw new Exception("No User with this Email");
+                }
+            }
+
+
         }
 
         VerificationCode isExist = verificationCodeRepository.findByEmail(email);

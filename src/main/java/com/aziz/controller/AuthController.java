@@ -4,6 +4,7 @@ import com.aziz.domain.USER_ROLE;
 import com.aziz.modal.User;
 import com.aziz.modal.VerificationCode;
 import com.aziz.repository.UserRepository;
+import com.aziz.request.LoginOtpRequest;
 import com.aziz.request.LoginRequest;
 import com.aziz.response.ApiResponse;
 import com.aziz.response.AuthResponse;
@@ -38,9 +39,9 @@ public class AuthController {
     }
 
     @PostMapping("/sent/login-signup-otp")
-    public ResponseEntity<ApiResponse> sentOtpHandler(@RequestBody VerificationCode req) throws Exception {
+    public ResponseEntity<ApiResponse> sentOtpHandler(@RequestBody LoginOtpRequest req) throws Exception {
 
-        authService.sendOtp(req.getEmail());
+        authService.sendOtp(req.getEmail(), req.getRole());
 
         ApiResponse res = new ApiResponse();
         res.setMessage("Code Sent Successfully");
