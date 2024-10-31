@@ -109,14 +109,29 @@ public class SellerServiceImpl implements SellerService {
             existingSeller.getBankDetails().setIban(seller.getBankDetails().getIban());
         }
 
-        
+        if (    seller.getPickupaddress() != null
+                && seller.getPickupaddress().getAddress() != null
+                && seller.getPickupaddress().getCity() != null
+                && seller.getPickupaddress().getMobile() != null
+                && seller.getPickupaddress().getState() != null
+        ) {
+            existingSeller.getPickupaddress().setAddress(seller.getPickupaddress().getAddress());
+            existingSeller.getPickupaddress().setCity(seller.getPickupaddress().getCity());
+            existingSeller.getPickupaddress().setMobile(seller.getPickupaddress().getMobile());
+            existingSeller.getPickupaddress().setState(seller.getPickupaddress().getState());
+            existingSeller.getPickupaddress().setPinCode(seller.getPickupaddress().getPinCode());
+        }
+        if (seller.getFiscalCode() != null) {
+            existingSeller.setFiscalCode(seller.getFiscalCode());
+        }
 
-
+        return sellerRepository.save(existingSeller);
     }
 
     @Override
-    public void deleteSeller(Long id) {
-
+    public void deleteSeller(Long id) throws Exception {
+        Seller seller = getSellerById(id);
+        sellerRepository.delete(seller);
     }
 
     @Override

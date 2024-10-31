@@ -13,7 +13,7 @@ public interface SellerService {
     Seller getSellerByEmail(String email) throws Exception;
     List<Seller> getAllSellers(AccountStatus status);
     Seller updateSeller(Long id, Seller seller) throws Exception;
-    void deleteSeller(Long id);
+    void deleteSeller(Long id) throws Exception;
     Seller verifyEmail(String email, String otp);
     Seller updateSellerAccountStatus(Long sellerId, AccountStatus status);
 }
