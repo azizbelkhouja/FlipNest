@@ -135,12 +135,18 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public Seller verifyEmail(String email, String otp) {
-        return null;
+    public Seller verifyEmail(String email, String otp) throws Exception {
+        Seller seller = getSellerByEmail(email);
+        seller.setEmailVerified(true);
+
+        return sellerRepository.save(seller);
     }
 
     @Override
-    public Seller updateSellerAccountStatus(Long sellerId, AccountStatus status) {
-        return null;
+    public Seller updateSellerAccountStatus(Long sellerId, AccountStatus status) throws Exception {
+        Seller seller = getSellerById(sellerId);
+        seller.setAccountStatus(status);
+
+        return sellerRepository.save(seller);
     }
 }
