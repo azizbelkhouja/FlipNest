@@ -24,28 +24,13 @@ public class SellerController {
     private final VerificationCodeRepository verificationCodeRepository;
     private final AuthService authService;
 
-    @PostMapping("/sent/login-otp")
-    public ResponseEntity<ApiResponse> sentOtpHandler(@RequestBody VerificationCode req) throws Exception {
-
-        authService.sendOtp(req.getEmail());
-
-        ApiResponse res = new ApiResponse();
-        res.setMessage("Code Sent Successfully");
-
-        return ResponseEntity.ok(res);
-    }
-
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> LoginSeller (
             @RequestBody LoginRequest req
     ) throws Exception {
         String otp = req.getOtp();
         String email = req.getEmail();
-
-//        VerificationCode verificationCode = verificationCodeRepository.findByEmail(email);
-//        if (verificationCode == null || !verificationCode.getOtp().equals(req.getOtp())) {
-//            throw new Exception("wrong otp");
-//        }
+        
 
         req.setEmail("Seller_" + email);
         AuthResponse authResponse = authService.signin(req);
