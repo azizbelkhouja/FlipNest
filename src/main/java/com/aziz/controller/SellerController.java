@@ -2,6 +2,7 @@ package com.aziz.controller;
 
 import com.aziz.config.JwtProvider;
 import com.aziz.domain.AccountStatus;
+import com.aziz.exceptions.SellerException;
 import com.aziz.modal.Seller;
 import com.aziz.modal.SellerReport;
 import com.aziz.modal.VerificationCode;
@@ -83,7 +84,7 @@ public class SellerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Seller> getSellerById(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Seller> getSellerById(@PathVariable Long id) throws SellerException {
         Seller seller = sellerService.getSellerById(id);
 
         return new ResponseEntity<>(seller, HttpStatus.OK);

@@ -3,6 +3,7 @@ package com.aziz.service.impl;
 import com.aziz.config.JwtProvider;
 import com.aziz.domain.AccountStatus;
 import com.aziz.domain.USER_ROLE;
+import com.aziz.exceptions.SellerException;
 import com.aziz.modal.Address;
 import com.aziz.modal.Seller;
 import com.aziz.repository.AddressRepository;
@@ -56,8 +57,8 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public Seller getSellerById(Long id) throws Exception {
-        return sellerRepository.findById(id).orElseThrow(() -> new Exception("seller not found with the id " + id));
+    public Seller getSellerById(Long id) throws SellerException {
+        return sellerRepository.findById(id).orElseThrow(() -> new SellerException("seller not found with the id " + id));
     }
 
     @Override
