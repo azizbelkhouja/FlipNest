@@ -46,5 +46,16 @@ public class SellerProductController {
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long productId) {
+        try {
+            productService.deleteProduct(productId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (ProductException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
 }
