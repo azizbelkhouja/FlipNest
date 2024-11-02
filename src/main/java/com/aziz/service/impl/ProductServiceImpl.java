@@ -12,6 +12,9 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -124,10 +127,43 @@ public class ProductServiceImpl implements ProductService {
                 Join<Product, Category> categoryJoin = root.join("category");
                 predicates.add(criteriaBuilder.equal(categoryJoin.get("categoryId"), category));
             }
+            if (colors != null && !colors.isEmpty()) {
+//                System.out.println("Color: " + color);
+                predicates.add(criteriaBuilder.equal(root.get("color"), colors));
+            }
+            if (sizes != null && !sizes.isEmpty()) {
+                predicates.add(criteriaBuilder.equal(root.get("size"), sizes));
+            }
+            if (minPrice != null) {
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("sellingPrice"), minPrice));
+            }
 
+            if (maxPrice != null) {
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("sellingPrice"), maxPrice));
+            }
+
+            if (minDiscount != null) {
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("discountPercent"), minDiscount));
+            }
+            if (stock != null) {
+                predicates.add(criteriaBuilder.equal(root.get("stock"), stock));
+            }
+            return null;
+        };
+        Pageable pageable;
+        if (sort != null && !sort.isEmpty()) {
+            pageable = switch (sort) {
+                case "price_low" ->
+                        PageRequest.of(pageNumber != null ? pageNumber : 0, 10, Sort.by("SellingPrice").ascending());
+                case "price_high" ->
+                        PageRequest.of(pageNumber != null ? pageNumber : 0, 10, Sort.by("SellingPrice").descending());
+                default -> PageRequest.of(pageNumber != null ? pageNumber : 0, 10, Sort.unsorted());
+            };
         }
-
-        return null;
+        else {
+            pageable = PageRequest.of(pageNumber != null? pageNumber:0, 10, Sort.unsorted());
+        }
+        return productRepository.findAll(spec, pageable);
     }
 
     @Override
@@ -135,3 +171,24 @@ public class ProductServiceImpl implements ProductService {
         return List.of();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
