@@ -5,15 +5,14 @@ import com.aziz.exceptions.ProductException;
 import com.aziz.exceptions.SellerException;
 import com.aziz.modal.Product;
 import com.aziz.modal.Seller;
+import com.aziz.request.CreateProductRequest;
 import com.aziz.service.ProductService;
 import com.aziz.service.SellerService;
+import jdk.jshell.spi.ExecutionControl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +33,18 @@ public class SellerProductController {
         List<Product> products = productService.getProductBySellerId(seller.getId());
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    @PostMapping()
+    public ResponseEntity<Product> createProduct(
+            @RequestBody CreateProductRequest request,
+            @RequestHeader("Authorization") String jwt)
+            throws Exception {
+
+        Seller seller = sellerService.getSellerProfile(jwt);
+
+        Product product = productService.createProduct(request, seller);
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
+    }
+
 
 }
