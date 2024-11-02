@@ -1,6 +1,8 @@
 package com.aziz.controller;
 
+import com.aziz.config.JwtProvider;
 import com.aziz.modal.Seller;
+import com.aziz.modal.SellerReport;
 import com.aziz.modal.VerificationCode;
 import com.aziz.repository.VerificationCodeRepository;
 import com.aziz.request.LoginRequest;
@@ -26,6 +28,7 @@ public class SellerController {
     private final VerificationCodeRepository verificationCodeRepository;
     private final AuthService authService;
     private final EmailService emailService;
+    private final JwtProvider jwtProvider;
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> LoginSeller (
@@ -91,7 +94,15 @@ public class SellerController {
         return new ResponseEntity<>(seller, HttpStatus.OK);
     }
 
+    @GetMapping("/report")
+    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
 
+        String email = jwtProvider.getEmailFromJwtToken(jwt);
+        Seller seller = sellerService.getSellerByEmail(email);
+        SellerReport report = sellerReportService.getSellerReport(seller);
+
+        return new ResponseEntity<>(report, HttpStatus.OK);
+    }
 
 
 
