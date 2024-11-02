@@ -1,5 +1,6 @@
 package com.aziz.controller;
 
+import com.aziz.modal.Seller;
 import com.aziz.modal.VerificationCode;
 import com.aziz.repository.VerificationCodeRepository;
 import com.aziz.request.LoginRequest;
@@ -8,11 +9,9 @@ import com.aziz.response.AuthResponse;
 import com.aziz.service.AuthService;
 import com.aziz.service.SellerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,4 +36,21 @@ public class SellerController {
 
         return ResponseEntity.ok(authResponse);
     }
+
+    @PatchMapping("/verify/{otp}")
+    public ResponseEntity<Seller> VerifySellerEmail (@PathVariable String otp) throws Exception {
+
+        VerificationCode verificationCode = verificationCodeRepository.findBYOtp(otp);
+
+        if (verificationCode == null || !verificationCode.getOtp().equals(otp)) {
+            throw new Exception("Wrong Otp");
+        }
+
+        Seller seller = sellerService.verifyEmail(verificationCode.getEmail(), otp);
+
+        return new ResponseEntity<>(seller, HttpStatus.OK);
+
+    }
+
+
 }
