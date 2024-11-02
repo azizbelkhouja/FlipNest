@@ -18,9 +18,9 @@ public class DatabaseConnectionTester {
     @EventListener(ApplicationReadyEvent.class)
     public void testDatabaseConnection() {
         try (Connection conn = dataSource.getConnection()) {
-            System.out.println("Database connection test successful.");
+//            System.out.println("Database connection test successful.");
         } catch (SQLException e) {
-            System.err.println("Database connection failed: " + e.getMessage());
+//            System.err.println("Database connection failed: " + e.getMessage());
         }
     }
 }

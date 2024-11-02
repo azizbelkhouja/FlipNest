@@ -35,9 +35,7 @@ public class SellerController {
     private final JwtProvider jwtProvider;
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> LoginSeller (
-            @RequestBody LoginRequest req
-    ) throws Exception {
+    public ResponseEntity<AuthResponse> LoginSeller (@RequestBody LoginRequest req) throws Exception {
         String otp = req.getOtp();
         String email = req.getEmail();
         

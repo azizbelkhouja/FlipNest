@@ -12,5 +12,5 @@ public interface AuthService {
 
     String createUser(SignupRequest req) throws Exception;
 
-    AuthResponse signin(LoginRequest req);
+    AuthResponse signin(LoginRequest req) throws Exception;
 }
