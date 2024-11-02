@@ -80,7 +80,7 @@ public class SellerController {
         String frontend_url = "http://localhost:3000/verify-seller-account";
         emailService.sendVerificationOtpEmail(seller.getEmail(), verificationCode.getOtp(), subject, text + frontend_url);
 
-        return new ResponseEntity<>(seller, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedSeller, HttpStatus.CREATED);
 
     }
 
