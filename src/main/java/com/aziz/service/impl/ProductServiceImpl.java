@@ -67,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
         product.setImages(req.getImages());
         product.setMrpPrice(req.getMrpPrice());
         product.setSizes(req.getSizes());
-        product.setDiscountPercent();
+        product.setDiscountPercent(discountPercentage);
 
         return productRepository.save(product);
     }
@@ -80,6 +80,7 @@ public class ProductServiceImpl implements ProductService {
         double discount = mrpPrice - sellingPrice;
         double discountPercentage = (discount/mrpPrice) * 100;
 
+        return (int)discountPercentage;
     }
 
     @Override
