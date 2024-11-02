@@ -1,6 +1,7 @@
 package com.aziz.controller;
 
 import com.aziz.config.JwtProvider;
+import com.aziz.domain.AccountStatus;
 import com.aziz.modal.Seller;
 import com.aziz.modal.SellerReport;
 import com.aziz.modal.VerificationCode;
@@ -17,6 +18,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.sun.beans.introspect.PropertyInfo.Name.required;
 
 @RestController
 @RequiredArgsConstructor
@@ -94,14 +99,22 @@ public class SellerController {
         return new ResponseEntity<>(seller, HttpStatus.OK);
     }
 
-    @GetMapping("/report")
-    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
+//    @GetMapping("/report")
+//    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
+//
+//        String email = jwtProvider.getEmailFromJwtToken(jwt);
+//        Seller seller = sellerService.getSellerByEmail(email);
+//        SellerReport report = sellerReportService.getSellerReport(seller);
+//
+//        return new ResponseEntity<>(report, HttpStatus.OK);
+//    }
 
-        String email = jwtProvider.getEmailFromJwtToken(jwt);
-        Seller seller = sellerService.getSellerByEmail(email);
-        SellerReport report = sellerReportService.getSellerReport(seller);
+    @GetMapping
+    public ResponseEntity<List<Seller>> getAllSellers(@RequestParam(required = false) AccountStatus status) {
 
-        return new ResponseEntity<>(report, HttpStatus.OK);
+        List<Seller> sellers = sellerService.getAllSellers(status);
+
+        return ResponseEntity.ok(sellers);
     }
 
 
