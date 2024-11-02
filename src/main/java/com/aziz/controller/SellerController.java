@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.sun.beans.introspect.PropertyInfo.Name.required;
 
 @RestController
 @RequiredArgsConstructor
@@ -52,7 +51,7 @@ public class SellerController {
     @PatchMapping("/verify/{otp}")
     public ResponseEntity<Seller> VerifySellerEmail (@PathVariable String otp) throws Exception {
 
-        VerificationCode verificationCode = verificationCodeRepository.findBYOtp(otp);
+        VerificationCode verificationCode = verificationCodeRepository.findByOtp(otp);
 
         if (verificationCode == null || !verificationCode.getOtp().equals(otp)) {
             throw new Exception("Wrong Otp");
