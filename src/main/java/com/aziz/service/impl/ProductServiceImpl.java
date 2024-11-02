@@ -1,5 +1,6 @@
 package com.aziz.service.impl;
 
+import com.aziz.exceptions.ProductException;
 import com.aziz.modal.Category;
 import com.aziz.modal.Product;
 import com.aziz.modal.Seller;
@@ -98,8 +99,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findProductById(Long productId) {
-        return null;
+    public Product findProductById(Long productId) throws ProductException {
+        return productRepository.findById(productId).orElseThrow(
+                () -> new ProductException("product not found with id " + productId)
+        );
     }
 
     @Override

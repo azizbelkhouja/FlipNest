@@ -1,5 +1,6 @@
 package com.aziz.service;
 
+import com.aziz.exceptions.ProductException;
 import com.aziz.modal.Product;
 import com.aziz.modal.Seller;
 import com.aziz.request.CreateProductRequest;
@@ -12,7 +13,7 @@ public interface ProductService {
     public Product createProduct(CreateProductRequest req, Seller seller);
     public void deleteProduct(Long productId);
     public Product updateProduct(Long productId, Product product);
-    Product findProductById(Long productId);
+    Product findProductById(Long productId) throws ProductException;
     List<Product> searchProducts();
     public Page<Product> getAllProducts(
             String category,
