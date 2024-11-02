@@ -69,12 +69,19 @@ public class SellerController {
         verificationCodeRepository.save(verificationCode);
 
         String subject = "UniEssentials Email Verification Code";
-        String text = "Welcome to UniEssentials, tap the link to verify your account";
+        String text = "Welcome to UniEssentials, tap the link to verify your account ";
         String frontend_url = "http://localhost:3000/verify-seller-account";
-        emailService.sendVerificationOtpEmail(seller.getEmail(), verificationCode.getOtp(), subject, text);
+        emailService.sendVerificationOtpEmail(seller.getEmail(), verificationCode.getOtp(), subject, text + frontend_url);
 
         return new ResponseEntity<>(seller, HttpStatus.CREATED);
 
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Seller> getSellerById(@PathVariable Long id) throws Exception {
+        Seller seller = sellerService.getSellerById(id);
+
+        return new ResponseEntity<>(seller, HttpStatus.OK);
     }
 
 }
