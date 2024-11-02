@@ -117,6 +117,17 @@ public class SellerController {
         return ResponseEntity.ok(sellers);
     }
 
+    @PatchMapping
+    public ResponseEntity<Seller> updateSeller(@RequestHeader("Authorization") String jwt,
+                                               @RequestBody Seller seller) throws Exception {
+        Seller profile = sellerService.getSellerProfile(jwt);
+        Seller updatedSeller = sellerService.updateSeller(profile.getId(), seller);
+
+        return ResponseEntity.ok(updatedSeller);
+    }
+
+
+
 
 
 
