@@ -7,7 +7,10 @@ import com.aziz.request.LoginRequest;
 import com.aziz.response.ApiResponse;
 import com.aziz.response.AuthResponse;
 import com.aziz.service.AuthService;
+import com.aziz.service.EmailService;
 import com.aziz.service.SellerService;
+import com.aziz.utils.OtpUtil;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +25,7 @@ public class SellerController {
     private final SellerService sellerService;
     private final VerificationCodeRepository verificationCodeRepository;
     private final AuthService authService;
+    private final EmailService emailService;
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> LoginSeller (
@@ -52,5 +56,54 @@ public class SellerController {
 
     }
 
+    @PostMapping
+    public ResponseEntity<Seller> CreateSeller (@RequestBody Seller seller) throws Exception, MessagingException {
+
+        Seller savedSeller = sellerService.createSeller(seller);
+
+        String otp = OtpUtil.generateOtp();
+
+        VerificationCode verificationCode = new VerificationCode();
+        verificationCode.setOtp(otp);
+        verificationCode.setEmail(seller.getEmail());
+        verificationCodeRepository.save(verificationCode);
+
+        String subject = "UniEssentials Email Verification Code";
+        String text = "Welcome to UniEssentials, tap the link to verify your account";
+        String frontend_url = "http://localhost:3000/verify-seller-account";
+        emailService.sendVerificationOtpEmail(seller.getEmail(), verificationCode.getOtp(), subject, text);
+
+        return new ResponseEntity<>(seller, HttpStatus.CREATED);
+
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
