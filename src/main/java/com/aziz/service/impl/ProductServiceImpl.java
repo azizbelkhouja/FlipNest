@@ -8,11 +8,15 @@ import com.aziz.repository.CategoryRepository;
 import com.aziz.repository.ProductRepository;
 import com.aziz.request.CreateProductRequest;
 import com.aziz.service.ProductService;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -85,13 +89,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct(Long productId) {
+    public void deleteProduct(Long productId) throws ProductException {
         Product product = findProductById(productId);
         productRepository.delete(product);
     }
 
     @Override
-    public Product updateProduct(Long productId, Product product) {
+    public Product updateProduct(Long productId, Product product) throws ProductException {
         findProductById(productId);
         product.setId(productId);
 
@@ -112,6 +116,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> getAllProducts(String category, String brand, String colors, String sizes, Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber) {
+
+        Specification<Product> spec = (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+
+            if (category != null) {
+                Join<Product, Category> categoryJoin = root.join("category");
+                predicates.add(criteriaBuilder.equal(categoryJoin.get("categoryId"), category));
+            }
+
+        }
+
         return null;
     }
 
