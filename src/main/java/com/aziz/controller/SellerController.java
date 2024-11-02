@@ -126,7 +126,13 @@ public class SellerController {
         return ResponseEntity.ok(updatedSeller);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSeller(@PathVariable Long id) throws Exception {
 
+        sellerService.deleteSeller(id);
+
+        return ResponseEntity.noContent().build();
+    }
 
 
 
