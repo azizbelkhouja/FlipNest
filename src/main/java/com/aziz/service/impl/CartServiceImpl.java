@@ -21,9 +21,28 @@ public class CartServiceImpl implements CartService {
     @Override
     public CartItem addCartItem(User user, Product product, String size, int quantity) {
 
+        Cart cart = findUserCart(user);
 
+        CartItem isPresent = cartItemRepository.findByCartAndProductAndSize(cart,product,size);
 
-        return null;
+        if (isPresent == null) {
+            CartItem cartItem = new CartItem();
+            cartItem.setProduct(product);
+            cartItem.setQuantity(quantity);
+            cartItem.setUserId(user.getId());
+            cartItem.setSize(size);
+
+            int totalPrice = quantity * product.getSellingPrice();
+            cartItem.setSellingPrice(totalPrice);
+
+            cart.getCartItems().add(cartItem);
+            cartItem.setCart(cart);
+
+            return cartItemRepository.save(cartItem);
+
+        }
+
+        return isPresent;
     }
 
     @Override
@@ -45,6 +64,7 @@ public class CartServiceImpl implements CartService {
         cart.setTotalItem(totalItems);
         cart.setTotalSellingPrice(totalDiscountedPrice);
         cart.setDiscount(calculateDiscountPercentage(totalPrice, totalDiscountedPrice));
+        cart.setTotalItem(totalItems);
 
         return null;
     }
