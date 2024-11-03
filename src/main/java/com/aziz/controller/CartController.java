@@ -54,6 +54,21 @@ public class CartController {
         return new ResponseEntity<>(item, HttpStatus.ACCEPTED);
     }
 
+    @DeleteMapping("/item/{cartItemId}")
+    public ResponseEntity<ApiResponse> deleteCartItemHandler(
+            @PathVariable Long cartItemId,
+            @RequestHeader("Authorization") String jwt)
+            throws Exception {
+
+        User user = userService.findUserByJwtToken(jwt);
+        cartItemService.removeCartItem(user.getId(), cartItemId);
+
+        ApiResponse res = new ApiResponse();
+        res.setMessage("Item Removed Successfully");
+
+        return new ResponseEntity<ApiResponse>(res, HttpStatus.ACCEPTED);
+    }
+
 
 
 }
