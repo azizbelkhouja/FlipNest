@@ -41,7 +41,9 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
-    public CartItem findCartItemById(Long id) {
-        return null;
+    public CartItem findCartItemById(Long id) throws Exception {
+        return cartItemRepository.findById(id).orElseThrow(
+                () -> new Exception("Item not found with id " + id)
+        );
     }
 }
