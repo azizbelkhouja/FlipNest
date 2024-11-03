@@ -25,12 +25,19 @@ public class CartItemServiceImpl implements CartItemService {
             item.setSellingPrice(item.getQuantity() * item.getProduct().getSellingPrice());
             return cartItemRepository.save(item);
         }
-        throw new Exception("The Item you trying to update is not yours");
+        throw new Exception("You can't update this item");
     }
 
     @Override
-    public void removeCartItem(Long userId, Long cartItemId) {
+    public void removeCartItem(Long userId, Long cartItemId) throws Exception {
 
+        CartItem item = findCartItemById(cartItemId);
+        User cartItemUser = item.getCart().getUser();
+
+        if (cartItemUser.getId().equals(userId)) {
+            cartItemRepository.delete(item);
+        }
+        else throw new Exception("You can't delete this item");
     }
 
     @Override
