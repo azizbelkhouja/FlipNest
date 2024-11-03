@@ -2,17 +2,18 @@ package com.aziz.controller;
 
 
 import com.aziz.modal.Cart;
+import com.aziz.modal.CartItem;
+import com.aziz.modal.Product;
 import com.aziz.modal.User;
+import com.aziz.request.AddItemRequest;
+import com.aziz.response.ApiResponse;
 import com.aziz.service.CartItemService;
 import com.aziz.service.CartService;
 import com.aziz.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,6 +32,22 @@ public class CartController {
         System.out.println("cart - " + cart.getUser().getEmail());
 
         return new ResponseEntity<Cart>(cart, HttpStatus.OK);
+    }
+
+    @PutMapping("/add")
+    public ResponseEntity<CartItem> addItemToCart(
+            @RequestBody AddItemRequest req,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+
+        User user = userService.findUserByJwtToken(jwt);
+        Product product = productService.findProductById(req.getProductId());
+
+        CartItem item = cartService.addCartItem(
+                user, product, req.getSize(), req.getQuantity());
+
+        ApiResponse res = new ApiResponse("Item Added To Cart Successfully", true);
+
+        return new ResponseEntity<>(item, HttpStatus.ACCEPTED);
     }
 
 
