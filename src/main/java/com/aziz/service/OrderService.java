@@ -16,4 +16,5 @@ public interface OrderService {
     List<Order> userOrdersHistory(Long userId);
     List<Order> sellerOrders(Long SellerId);
     Order updateOrderStatus(Long id, OrderStatus orderStatus);
+    Order cancelOrder(Long orderId, User user);
 }
