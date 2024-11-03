@@ -20,12 +20,44 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public CartItem addCartItem(User user, Product product, String size, int quantity) {
+
+
+
         return null;
     }
 
     @Override
     public Cart findUserCart(User user) {
+
+        Cart cart = cartRepository.findByUserId(user.getId());
+
+        int totalPrice = 0;
+        int totalDiscountedPrice = 0;
+        int totalItems = 0;
+
+        for (CartItem cartItem: cart.getCartItems()) {
+            totalItems += cartItem.getMrpPrice();
+            totalDiscountedPrice += cartItem.getSellingPrice();
+            totalItems += cartItem.getQuantity();
+        }
+
+        cart.setTotalMrpPrice(totalPrice);
+        cart.setTotalItem(totalItems);
+        cart.setTotalSellingPrice(totalDiscountedPrice);
+        cart.setDiscount(calculateDiscountPercentage(totalPrice, totalDiscountedPrice));
+
         return null;
+    }
+
+    private int calculateDiscountPercentage(int mrpPrice, int sellingPrice) {
+
+        if (mrpPrice <= 0) {
+            throw new IllegalArgumentException("Actual Price must be > 0");
+        }
+        double discount = mrpPrice - sellingPrice;
+        double discountPercentage = (discount/mrpPrice) * 100;
+
+        return (int)discountPercentage;
     }
 }
 
