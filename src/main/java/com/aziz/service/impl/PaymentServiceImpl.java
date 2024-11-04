@@ -84,6 +84,6 @@ public class PaymentServiceImpl implements PaymentService {
 
         Session session = Session.create(params);
 
-        return "";
+        return session.getUrl();
     }
 }
