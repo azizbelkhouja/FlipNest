@@ -17,7 +17,7 @@ public class SellerReport {
     @OneToOne
     private Seller seller;
 
-    private Long totalEarning = 0L;
+    private Long totalEarnings = 0L;
 
     private Long totalSales = 0L;
 

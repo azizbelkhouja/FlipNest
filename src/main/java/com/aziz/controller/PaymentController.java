@@ -1,14 +1,9 @@
 package com.aziz.controller;
 
-import com.aziz.modal.PaymentOrder;
-import com.aziz.modal.SellerReport;
-import com.aziz.modal.User;
+import com.aziz.modal.*;
 import com.aziz.response.ApiResponse;
 import com.aziz.response.PaymentLinkResponse;
-import com.aziz.service.OrderService;
-import com.aziz.service.PaymentService;
-import com.aziz.service.SellerService;
-import com.aziz.service.UserService;
+import com.aziz.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +18,7 @@ public class PaymentController {
     private final SellerService sellerService;
     private OrderService orderService;
     private final SellerReport sellerReport;
+    private final SellerReportService sellerReportService;
 
     @GetMapping("/{paymentId}")
     public ResponseEntity<ApiResponse> paymentSuccessHandler(
@@ -41,6 +37,20 @@ public class PaymentController {
                 paymentId,
                 paymentLinkId
         );
+        if (paymentSuccess) {
+            for (Order order : paymentOrder.getOrders()) {
+//                transactionService.createTransaction(order);
+
+                Seller seller = sellerService.getSellerById(order.getSellerId());
+                SellerReport report = sellerReportService.getSellerReport(seller);
+
+                report.setTotalOrders(report.getTotalOrders() + 1);
+                report.setTotalEarnings(report.getTotalEarnings() + order.getTotalSellingPrice());
+                report.setTotalSales(report.getTotalSales() + order.getOrderItems().size());
+
+                sellerReportService.updateSellerReport(report);
+            }
+        }
 
     }
 
