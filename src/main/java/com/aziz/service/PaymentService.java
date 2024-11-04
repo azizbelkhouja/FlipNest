@@ -10,8 +10,8 @@ import java.util.Set;
 public interface PaymentService {
 
     PaymentOrder createOrder(User user, Set<Order> orders);
-    PaymentOrder getPaymentOrderById(String orderId);
-    PaymentOrder getPaymentOrderByPaymentId(String paymentId);
+    PaymentOrder getPaymentOrderById(Long orderId) throws Exception;
+    PaymentOrder getPaymentOrderByPaymentId(String paymentId) throws Exception;
     Boolean ProceedPaymentOrder(PaymentOrder paymentOrder, String paymentId, String paymentLinkId);
     String createStripePaymentLink(User user, Long amount, Long orderId);
 }

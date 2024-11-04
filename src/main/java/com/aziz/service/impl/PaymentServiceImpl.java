@@ -33,13 +33,23 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public PaymentOrder getPaymentOrderById(String orderId) {
-        return null;
+    public PaymentOrder getPaymentOrderById(Long orderId) throws Exception {
+
+        return paymentOrderRepository.findById(orderId).orElseThrow(
+                () -> new Exception("Order not found")
+        );
     }
 
     @Override
-    public PaymentOrder getPaymentOrderByPaymentId(String paymentId) {
-        return null;
+    public PaymentOrder getPaymentOrderByPaymentId(String paymentId) throws Exception {
+
+        PaymentOrder paymentOrder = paymentOrderRepository.findByPaymentLinkId(paymentId);
+
+        if (paymentOrder == null) {
+            throw new Exception(("Payment order not found"));
+        }
+
+        return paymentOrder;
     }
 
     @Override
