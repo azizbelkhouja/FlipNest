@@ -76,7 +76,7 @@ public class PaymentServiceImpl implements PaymentService {
 
                 // Check if the payment was successful
                 if ("succeeded".equals(paymentIntent.getStatus())) {
-                    paymentOrder.setStatus(PaymentOrderStatus.COMPLETED); // Update status to completed
+                    paymentOrder.setStatus(PaymentOrderStatus.SUCCESS); // Update status to completed
                     return true;
                 } else {
                     paymentOrder.setStatus(PaymentOrderStatus.FAILED); // Update status to failed if not succeeded

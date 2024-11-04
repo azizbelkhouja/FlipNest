@@ -3,8 +3,10 @@ package com.aziz.controller;
 
 import com.aziz.domain.PaymentMethod;
 import com.aziz.modal.*;
+import com.aziz.repository.PaymentOrderRepository;
 import com.aziz.response.PaymentLinkResponse;
 import com.aziz.service.*;
+import com.stripe.model.PaymentLink;
 import jdk.jshell.spi.ExecutionControl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,8 @@ public class OrderController {
     private final CartService cartService;
     private final SellerService sellerService;
     private final SellerReportService sellerReportService;
+    private final PaymentService paymentService;
+    private final PaymentOrderRepository paymentOrderRepository;
 
     @PostMapping()
     public ResponseEntity<PaymentLinkResponse> createOrderHandler(
@@ -35,24 +39,12 @@ public class OrderController {
         Cart cart = cartService.findUserCart(user);
         Set<Order> orders = orderService.createOrder(user, shippingAddress, cart);
 
-//        PaymentOrder paymentOrder = paymentService.createOrder(user, orders);
+       PaymentOrder paymentOrder = paymentService.createOrder(user, orders);
 
         PaymentLinkResponse res = new PaymentLinkResponse();
 
-//        if (paymentMethod.equals(PaymentMethod.STRIPE)) {
-//            PaymentLink payment = paymentService.createRazorpayPaymentLink(
-//                    user,
-//                    paymentOrder.getAmount(),
-//                    paymentOrder.getId()
-//            );
-//            String paymentUrl = payment.get("short_url");
-//            String paymentUrlId = payment.get("id");
-//
-//            res.setPayment_link_url(paymentUrl);
-//
-//            paymentOrder.setPaymentLinkId(paymentUrlId);
-//            paymentOrderRepository.save(paymentOrder);
-//        }
+        String paymentUrl = paymentService.createStripePaymentLink(user, paymentOrder.getAmount(), paymentOrder.getId());
+        res.setPayment_link_url(paymentUrl);
 
         return new ResponseEntity<>(res, HttpStatus.OK);
 

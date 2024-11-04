@@ -5,6 +5,7 @@ import com.aziz.response.ApiResponse;
 import com.aziz.response.PaymentLinkResponse;
 import com.aziz.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,6 @@ public class PaymentController {
     private final UserService userService;
     private final SellerService sellerService;
     private OrderService orderService;
-    private final SellerReport sellerReport;
     private final SellerReportService sellerReportService;
 
     @GetMapping("/{paymentId}")
@@ -51,6 +51,11 @@ public class PaymentController {
                 sellerReportService.updateSellerReport(report);
             }
         }
+
+        ApiResponse res = new ApiResponse();
+        res.setMessage("Payment successful");
+
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
 
     }
 
