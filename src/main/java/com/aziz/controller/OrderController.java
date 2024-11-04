@@ -76,5 +76,14 @@ public class OrderController {
         return new ResponseEntity<>(orders, HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/item/{orderItemId}")
+    public ResponseEntity<OrderItem> getOrderItemById(
+            @PathVariable Long orderItemId,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+        System.out.println("------- controller ");
+        User user = userService.findUserByJwtToken(jwt);
+        OrderItem orderItem = orderService.getOrderItemById(orderItemId);
+        return new ResponseEntity<>(orderItem, HttpStatus.ACCEPTED);
+    }
 
 }

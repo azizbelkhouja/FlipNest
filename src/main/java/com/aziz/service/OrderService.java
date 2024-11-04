@@ -14,5 +14,5 @@ public interface OrderService {
     List<Order> sellerOrders(Long SellerId);
     Order updateOrderStatus(Long id, OrderStatus orderStatus) throws Exception;
     Order cancelOrder(Long orderId, User user) throws Exception;
-    OrderItem findById(Long id) throws Exception;
+    OrderItem getOrderItemById(Long id) throws Exception;
 }
