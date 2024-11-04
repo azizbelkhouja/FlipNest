@@ -63,6 +63,34 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
+    public Boolean ProceedPaymentOrder(PaymentOrder paymentOrder, String paymentId, String paymentLinkId) {
+
+        Stripe.apiKey = stripeSecretKey;
+
+        if (paymentOrder.getStatus().equals(PaymentOrderStatus.PENDING)) {
+            try {
+                // Confirm the payment intent
+                PaymentIntentConfirmParams params = PaymentIntentConfirmParams.builder().build();
+                PaymentIntent paymentIntent = PaymentIntent.retrieve(paymentId);
+                paymentIntent = paymentIntent.confirm(params);
+
+                // Check if the payment was successful
+                if ("succeeded".equals(paymentIntent.getStatus())) {
+                    paymentOrder.setStatus(PaymentOrderStatus.COMPLETED); // Update status to completed
+                    return true;
+                } else {
+                    paymentOrder.setStatus(PaymentOrderStatus.FAILED); // Update status to failed if not succeeded
+                }
+            } catch (StripeException e) {
+                e.printStackTrace();
+                paymentOrder.setStatus(PaymentOrderStatus.FAILED); // Set status to failed if an error occurs
+            }
+        }
+
+        return false; // Return false if the payment was not successful
+    }
+
+    @Override
     public String createStripePaymentLink(User user, Long amount, Long orderId) throws StripeException {
 
         Stripe.apiKey = stripeSecretKey;
