@@ -67,6 +67,14 @@ public class OrderController {
         return new ResponseEntity<>(orders, HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Order> getOrderById(@PathVariable Long orderId, @RequestHeader("Authorization") String jwt)
+            throws Exception {
+
+        User user = userService.findUserByJwtToken(jwt);
+        Order orders = orderService.findOrderById(orderId);
+        return new ResponseEntity<>(orders, HttpStatus.ACCEPTED);
+    }
 
 
 }
