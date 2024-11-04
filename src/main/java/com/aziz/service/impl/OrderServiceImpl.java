@@ -4,6 +4,7 @@ import com.aziz.domain.OrderStatus;
 import com.aziz.domain.PaymentStatus;
 import com.aziz.modal.*;
 import com.aziz.repository.AddressRepository;
+import com.aziz.repository.OrderItemRepository;
 import com.aziz.repository.OrderRepository;
 import com.aziz.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final AddressRepository addressRepository;
+    private final OrderItemRepository orderItemRepository;
 
     @Override
     public Set<Order> createOrder(User user, Address shippingAddress, Cart cart) {
@@ -54,7 +56,27 @@ public class OrderServiceImpl implements OrderService {
             Order savedOrder = orderRepository.save(createdOrder);
             orders.add(savedOrder);
 
-            List<OrderItem> OrderItems = new ArrayList<>();
+            List<OrderItem> orderItems = new ArrayList<>();
+
+            for (CartItem item : items) {
+                OrderItem orderItem = new OrderItem();
+
+                orderItem.setOrder(savedOrder);
+                orderItem.setMrpPrice(item.getMrpPrice());
+                orderItem.setProduct(item.getProduct());
+                orderItem.setQuantity(item.getQuantity());
+                orderItem.setSize(item.getSize());
+                orderItem.setUserId(item.getUserId());
+                orderItem.setSellingPrice(item.getSellingPrice());
+
+                savedOrder.getOrderItems().add(orderItem);
+
+                OrderItem savedOrderItem = orderItemRepository.save(orderItem);
+                orderItems.add(savedOrderItem);
+
+            }
+
+            return orders;
         }
 
 
