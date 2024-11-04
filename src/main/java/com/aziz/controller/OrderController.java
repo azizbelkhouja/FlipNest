@@ -39,7 +39,7 @@ public class OrderController {
 
         PaymentLinkResponse res = new PaymentLinkResponse();
 
-//        if (paymentMethod.equals(PaymentMethod.PAYPAL)) {
+//        if (paymentMethod.equals(PaymentMethod.STRIPE)) {
 //            PaymentLink payment = paymentService.createRazorpayPaymentLink(
 //                    user,
 //                    paymentOrder.getAmount(),
