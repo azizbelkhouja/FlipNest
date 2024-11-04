@@ -12,7 +12,7 @@ import java.util.Set;
 public interface OrderService {
 
     Set<Order> createOrder(User user, Address shippingAddress, Cart cart);
-    Order findOrderById(Long id);
+    Order findOrderById(Long id) throws Exception;
     List<Order> userOrdersHistory(Long userId);
     List<Order> sellerOrders(Long SellerId);
     Order updateOrderStatus(Long id, OrderStatus orderStatus);

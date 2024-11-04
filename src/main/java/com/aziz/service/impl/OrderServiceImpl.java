@@ -76,21 +76,20 @@ public class OrderServiceImpl implements OrderService {
 
             }
 
-            return orders;
         }
-
-
-        return Set.of();
+        return orders;
     }
 
     @Override
-    public Order findOrderById(Long id) {
-        return null;
+    public Order findOrderById(Long id) throws Exception {
+        return orderRepository.findById(id).orElseThrow(
+                () -> new Exception("Order not found")
+        );
     }
 
     @Override
     public List<Order> userOrdersHistory(Long userId) {
-        return List.of();
+        return orderRepository.findByUserId(userId);
     }
 
     @Override
