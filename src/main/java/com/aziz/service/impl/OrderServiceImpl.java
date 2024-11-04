@@ -98,8 +98,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order updateOrderStatus(Long id, OrderStatus orderStatus) {
-        return null;
+    public Order updateOrderStatus(Long id, OrderStatus orderStatus) throws Exception {
+
+        Order order = findOrderById(id);
+        order.setOrderStatus(orderStatus);
+
+        return orderRepository.save(order);
     }
 
     @Override
@@ -107,3 +111,26 @@ public class OrderServiceImpl implements OrderService {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
