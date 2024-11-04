@@ -12,6 +12,7 @@ import com.aziz.response.ApiResponse;
 import com.aziz.response.AuthResponse;
 import com.aziz.service.AuthService;
 import com.aziz.service.EmailService;
+import com.aziz.service.SellerReportService;
 import com.aziz.service.SellerService;
 import com.aziz.utils.OtpUtil;
 import jakarta.mail.MessagingException;
@@ -34,6 +35,7 @@ public class SellerController {
     private final AuthService authService;
     private final EmailService emailService;
     private final JwtProvider jwtProvider;
+    private final SellerReportService sellerReportService;
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> LoginSeller (@RequestBody LoginRequest req) throws Exception {
@@ -97,15 +99,14 @@ public class SellerController {
         return new ResponseEntity<>(seller, HttpStatus.OK);
     }
 
-//    @GetMapping("/report")
-//    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
-//
-//        String email = jwtProvider.getEmailFromJwtToken(jwt);
-//        Seller seller = sellerService.getSellerByEmail(email);
-//        SellerReport report = sellerReportService.getSellerReport(seller);
-//
-//        return new ResponseEntity<>(report, HttpStatus.OK);
-//    }
+    @GetMapping("/report")
+    public ResponseEntity<SellerReport> getSellerReport(@RequestHeader("Authorization") String jwt) throws Exception {
+
+        Seller seller = sellerService.getSellerProfile(jwt);
+        SellerReport report = sellerReportService.getSellerReport(seller);
+
+        return new ResponseEntity<>(report, HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<Seller>> getAllSellers(@RequestParam(required = false) AccountStatus status) {
