@@ -31,7 +31,8 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public List<Transaction> getTransactionBySellerId(Seller seller) {
-        return List.of();
+
+        return transactionRepository.findBySellerId(seller.getId());
     }
 
     @Override
@@ -39,3 +40,19 @@ public class TransactionServiceImpl implements TransactionService{
         return List.of();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
