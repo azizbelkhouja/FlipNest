@@ -7,9 +7,11 @@ import com.aziz.repository.SellerRepository;
 import com.aziz.repository.TransactionRepository;
 import com.aziz.service.TransactionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService{
 
