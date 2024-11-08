@@ -37,7 +37,8 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public List<Transaction> getAllTransactions() {
-        return List.of();
+
+        return transactionRepository.findAll();
     }
 }
 
