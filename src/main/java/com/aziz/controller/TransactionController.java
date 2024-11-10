@@ -33,7 +33,7 @@ public class TransactionController {
         return ResponseEntity.ok(transactions);
     }
 
-    @GetMapping("/transactions")
+    @GetMapping
     public ResponseEntity<List<Transaction>> getAllTransactions() {
         List<Transaction> transactions = transactionService.getAllTransactions();
         return ResponseEntity.ok(transactions);
