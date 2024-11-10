@@ -5,6 +5,7 @@ import com.aziz.modal.Product;
 import com.aziz.modal.Review;
 import com.aziz.modal.User;
 import com.aziz.request.CreateReviewRequest;
+import com.aziz.response.ApiResponse;
 import com.aziz.service.ProductService;
 import com.aziz.service.ReviewService;
 import com.aziz.service.UserService;
@@ -61,6 +62,19 @@ public class ReviewController {
         return ResponseEntity.ok(review);
     }
 
+    @DeleteMapping("/reviews/{reviewId}")
+    public ResponseEntity<ApiResponse> deleteReview(
+            @PathVariable Long reviewId,
+            @RequestHeader("Authorization") String jwt) throws Exception {
+
+        User user = userService.findUserByJwtToken(jwt);
+        reviewService.deleteReview(reviewId, user.getId());
+
+        ApiResponse res = new ApiResponse();
+        res.setMessage("Review deleted successfully");
+
+        return ResponseEntity.ok(res);
+    }
 
 
 }
