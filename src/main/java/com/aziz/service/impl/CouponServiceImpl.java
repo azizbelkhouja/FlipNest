@@ -8,6 +8,7 @@ import com.aziz.repository.CouponRepository;
 import com.aziz.repository.UserRepository;
 import com.aziz.service.CouponService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -79,8 +80,9 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
+    @PreAuthorize("hasRole ('Admin')")
     public Coupon createCoupon(Coupon coupon) {
-        return null;
+        return couponRepository.save(coupon);
     }
 
     @Override
