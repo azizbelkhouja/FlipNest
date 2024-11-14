@@ -80,17 +80,18 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    @PreAuthorize("hasRole ('Admin')")
+    @PreAuthorize("hasRole ('ADMIN')")
     public Coupon createCoupon(Coupon coupon) {
         return couponRepository.save(coupon);
     }
 
     @Override
     public List<Coupon> findAllCoupons() {
-        return List.of();
+        return couponRepository.findAll();
     }
 
     @Override
+    @PreAuthorize("hasRole ('ADMIN')")
     public void deleteCoupon(Long id) {
 
     }
