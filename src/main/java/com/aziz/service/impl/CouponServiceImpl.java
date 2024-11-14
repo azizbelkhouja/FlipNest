@@ -5,10 +5,12 @@ import com.aziz.modal.Coupon;
 import com.aziz.modal.User;
 import com.aziz.repository.CartRepository;
 import com.aziz.repository.CouponRepository;
+import com.aziz.repository.UserRepository;
 import com.aziz.service.CouponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -17,6 +19,7 @@ public class CouponServiceImpl implements CouponService {
 
     private final CouponRepository couponRepository;
     private final CartRepository cartRepository;
+    private final UserRepository userRepository;
 
 
     @Override
@@ -32,10 +35,24 @@ public class CouponServiceImpl implements CouponService {
             throw new Exception("coupon already used");
         }
         if (orderValue < coupon.getMinimumOrderValue()) {
-            throw new Exception("Add more orders to use coupon");
+            throw new Exception("minimum orders are " + coupon.getMinimumOrderValue());
+        }
+        if  (    coupon.isActive() &&
+                 LocalDate.now().isAfter(coupon.getValidityStartDate()) &&
+                 LocalDate.now().isBefore(coupon.getValidityEndDate())
+            )
+        {
+            user.getUsedCoupons().add(coupon);
+            userRepository.save(user);
+
+            double discountedPrice = ( cart.getTotalSellingPrice() * coupon.getDiscountPercentage() ) / 100 ;
+            cart.setTotalSellingPrice(cart.getTotalSellingPrice() - discountedPrice);
+            cart.setCouponCode(code);
+            cartRepository.save(cart);
+            return cart;
         }
 
-        return null;
+        throw new Exception("coupon not valid");
     }
 
     @Override
