@@ -92,7 +92,31 @@ public class CouponServiceImpl implements CouponService {
 
     @Override
     @PreAuthorize("hasRole ('ADMIN')")
-    public void deleteCoupon(Long id) {
-
+    public void deleteCoupon(Long id) throws Exception {
+        findCouponById(id);
+        couponRepository.deleteById(id);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
