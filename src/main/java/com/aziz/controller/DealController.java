@@ -1,6 +1,7 @@
 package com.aziz.controller;
 
 import com.aziz.modal.Deal;
+import com.aziz.response.ApiResponse;
 import com.aziz.service.DealService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,18 @@ public class DealController {
         Deal updatedDeal = dealService.updateDeal(deal, id);
         return ResponseEntity.ok(updatedDeal);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse> deleteDeals(
+            @PathVariable Long id
+    ) throws Exception {
+        dealService.deleteDeal(id);
+
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setMessage("Deal is deleted");
+
+        return new ResponseEntity<>(apiResponse, HttpStatus.ACCEPTED);
+    }
+
 
 }
