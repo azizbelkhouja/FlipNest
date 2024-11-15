@@ -34,8 +34,22 @@ public class DealServiceImpl implements DealService {
     }
 
     @Override
-    public Deal updateDeal(Deal deal) {
-        return null;
+    public Deal updateDeal(Deal deal, Long id) throws Exception {
+
+        Deal existingDeal = dealRepository.findById(id).orElse(null);
+        HomeCategory category = homeCategoryRepository.findById(deal.getCategory().getId()).orElse(null);
+
+        if (existingDeal != null) {
+            if (deal.getDiscount() != null) {
+                existingDeal.setDiscount(deal.getDiscount());
+            }
+            if (category != null) {
+                existingDeal.setCategory(category);
+            }
+            return dealRepository.save(existingDeal);
+        }
+        throw new Exception("Deal not found");
+
     }
 
     @Override
