@@ -5,7 +5,6 @@ import { Avatar, Button, IconButton, useMediaQuery, useTheme } from '@mui/materi
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { FavoriteBorder, Storefront } from '@mui/icons-material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 
@@ -16,18 +15,27 @@ const Navbar = () => {
     return (
         <>
             <Box>
-                <div className='flex items-center justify-between px-5 lg:px20 h-[70px]  bg-[#048690]'>
-                    <div>
+                <div className='flex items-center justify-between px-5 lg:px20 h-[70px]  bg-primaryblue'>
+                    <div className='flex ite,s-center gap-9'>
                         <div className='flex items-center gap-2'>
                             <IconButton>
                                 <MenuIcon sx={{ color: 'white' }} />
                             </IconButton>
-                            <h1 className='logo cursor-pointer text-lg md:text-2xl text-white'>
+                            <h1 className='logo cursor-pointer text-lg font-bold md:text-2xl text-white'>
                                 FlipNest 
                             </h1>
                         </div>
+                        <ul className='flex items-center text-white font-light'>
+                            {
+                                ["Study Resources", "Electronics", "Furniture & Dorm Essentials", "Clothing"]
+                                .map((item) => (
+                                    <li className='mainCategories hover:underline px-4 flex items-center cursor-pointer'>{item}</li>
+                                ))
+                            }
+                        </ul>
+
                     </div>
-                    <div className='flex gap-1 lg:gap-6 items-center'>
+                    <div className='flex gap-1 lg:gap-4 items-center'>
                         <IconButton>
                             <SearchIcon sx={{ color: 'white' }}/>
                         </IconButton>
