@@ -2,6 +2,7 @@ export const electronicsleveltwo = [
     {
       name: "Laptops",
       categoryId: "Laptops",
+      parentCategoryId: "Electronics",
       level: 2,
     },
     {

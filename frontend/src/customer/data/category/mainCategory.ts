@@ -1,17 +1,17 @@
 export const mainCategory = [
     {
         name: "Study Resources",
-        categoryId: "Study_Resources",
+        CategoryId: "Study Resources",
         level: 1,
       },
       {
         name: "Electronics",
-        categoryId: "Electronics",
+        CategoryId: "Electronics",
         level: 1,
       },
       {
         name: "Furniture & Dorm Essentials",
-        categoryId: "Furniture_Dorm Essentials",
+        categoryId: "Furniture & Dorm Essentials",
         level: 1,
       },
       {
