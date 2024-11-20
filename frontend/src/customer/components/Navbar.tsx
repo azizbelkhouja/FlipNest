@@ -18,9 +18,9 @@ const Navbar = () => {
                 <div className='flex items-center justify-between px-5 lg:px20 h-[70px]  bg-primaryblue'>
                     <div className='flex ite,s-center gap-9'>
                         <div className='flex items-center gap-2'>
-                            <IconButton>
+                            {!isLarge && <IconButton>
                                 <MenuIcon sx={{ color: 'white' }} />
-                            </IconButton>
+                            </IconButton>}
                             <h1 className='logo cursor-pointer text-lg font-bold md:text-2xl text-white'>
                                 FlipNest 
                             </h1>

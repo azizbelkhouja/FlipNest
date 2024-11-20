@@ -1,5 +1,6 @@
 import React from 'react'
-import ElectronicsCategory from './ElectronicsCategory'
+import ElectronicsCategory from './ElectronicsCategory/ElectronicsCategory'
+import CategoryGrid from './CategoryGrid/CategoryGrid'
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
     <div className='space-y-5 lg:space-y-10 relative'>
 
         <ElectronicsCategory/>
+        <CategoryGrid/>
 
     </div>
     
