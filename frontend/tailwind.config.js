@@ -7,8 +7,10 @@ module.exports = {
         "primaryblue": "#048690",
         "lightblue": "#77BDC3",
         "greyblue": "#012A2D",
-        "grey": "#59595A",
-        "darkblue" : "#1C2C4A"
+        "personalgrey": "#59595A",
+        "darkblue" : "#1C2C4A",
+        "moredarkblue" : "#012A2D"
+        //#048690
       }
     },
   },
