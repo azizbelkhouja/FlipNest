@@ -2,6 +2,7 @@ import React from 'react'
 import ElectronicsCategory from './ElectronicsCategory/ElectronicsCategory'
 import CategoryGrid from './CategoryGrid/CategoryGrid'
 import Deal from './Deal/Deal'
+import ShopByCategory from './ShopByCategory/ShopByCategory'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <ElectronicsCategory/>
         <CategoryGrid/>
         <Deal/>
+        <ShopByCategory/>
 
     </div>
     
