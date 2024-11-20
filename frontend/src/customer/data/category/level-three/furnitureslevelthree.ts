@@ -1,0 +1,86 @@
+export const furnitureAndDormItems = [
+    {
+      name: "Bedsheets",
+      categoryId: "Bedsheets",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Mattresses",
+      categoryId: "Mattresses",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Pillows",
+      categoryId: "Pillows",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Sofas",
+      categoryId: "Sofas",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Bookshelves",
+      categoryId: "Bookshelves",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Dining Tables",
+      categoryId: "Dining Tables",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Curtains",
+      categoryId: "Curtains",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Rugs",
+      categoryId: "Rugs",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Storage Bins",
+      categoryId: "Storage Bins",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Desk Lamps",
+      categoryId: "Desk Lamps",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Chairs",
+      categoryId: "Chairs",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Coffee Tables",
+      categoryId: "Coffee Tables",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Wall Shelves",
+      categoryId: "Wall Shelves",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+    {
+      name: "Floor Lamps",
+      categoryId: "Floor Lamps",
+      parentCategoryName: "Furniture & Dorm Essentials",
+      parentCategoryId: "Furniture & Dorm Essentials",
+    },
+  ];
