@@ -30,7 +30,7 @@ const Home = () => {
           <div className='absolute top-1/2 left-4 lg:left-[15rem] transform -translate-y-1/2 font-semibold lg:text-4xl space-y-3'>
             <h1>Sell Your Product</h1>
             <p className='text-lg md:text-2xl'>On <span className='logo'>FlipNest</span></p>
-            <div className='pt-6 flex justify-center'>
+            <div className='pt-6 flex justify-start'>
               <Button 
                 startIcon={<StorefrontIcon />} 
                 variant="contained" 
@@ -53,9 +53,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
-
-
 
     </div>
     
