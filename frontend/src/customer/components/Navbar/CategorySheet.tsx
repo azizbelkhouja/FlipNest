@@ -26,12 +26,17 @@ const CategorySheet = () => {
   return (
     <Box sx={
         {zIndex: 1}
-    } className='bg-black shadow-lg lg:h-[500px] overflow-y-auto'>
+    } className='bg-white shadow-lg lg:h-[500px] overflow-y-auto'>
         <div className='flex text-sm flex-wrap'>
             {
                 categoryTwo["resources"].map((item) => 
                     <div>
-                        <p className='text-primaryblue mb-5 font-semibold'></p>
+                        <p className='text-primaryblue mb-5 font-semibold'>{item.name}</p>
+                        <ul className='space-y-3'>
+                            <li className='hover:text-darkblue cursor-pointer'>
+                                {item.name}
+                            </li>
+                        </ul>
                     </div>)
             }
         </div>

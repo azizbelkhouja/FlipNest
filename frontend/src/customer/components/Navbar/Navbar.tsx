@@ -15,7 +15,7 @@ const Navbar = () => {
 
     return (
         <>
-            <Box>
+            <Box className='sticky top-0 left-0 right-0 bg-white' sx = {{zIndex : 2}}>
                 <div className='flex items-center justify-between px-5 lg:px20 h-[70px]  bg-primaryblue'>
                     <div className='flex ite,s-center gap-9'>
                         <div className='flex items-center gap-2'>
