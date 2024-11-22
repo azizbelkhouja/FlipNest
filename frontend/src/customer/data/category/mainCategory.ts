@@ -1,7 +1,7 @@
 export const mainCategory = [
     {
         name: "Study Resources",
-        CategoryId: "Study Resources",
+        CategoryId: "study_resources",
         level: 1,
       },
       {
@@ -11,7 +11,7 @@ export const mainCategory = [
       },
       {
         name: "Furniture & Dorm Essentials",
-        categoryId: "Furniture & Dorm Essentials",
+        categoryId: "furniture_dorm",
         level: 1,
       },
       {

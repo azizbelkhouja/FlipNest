@@ -2,25 +2,25 @@ export const studyresourcesleveltwo = [
     {
       name: "Books",
       categoryId: "Books",
-      parentCategoryId: "Study Resources",
+      parentCategoryId: "study_resources",
       level: 2,
     },
     {
       name: "Notes & Summaries",
       categoryId: "Notes & Summaries",
-      parentCategoryId: "Study Resources",
+      parentCategoryId: "study_resources",
       level: 2,
     },
     {
       name: "Stationery",
       categoryId: "Stationery",
-      parentCategoryId: "Study Resources",
+      parentCategoryId: "study_resources",
       level: 2,
     },
     {
       name: "Online Courses",
       categoryId: "Online Courses",
-      parentCategoryId: "Study Resources",
+      parentCategoryId: "study_resources",
       level: 2,
     },
   ];

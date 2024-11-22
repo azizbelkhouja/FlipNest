@@ -22,6 +22,10 @@ const categoryThree = {
     furnitures: furnitureAndDormItems
 }
 
+const childCategory = (category:any, parentCategoryId:any) => {
+    return category.filter((child:any) => child.parentCategoryId == parentCategoryId)
+}
+
 const CategorySheet = () => {
   return (
     <Box sx={
@@ -29,13 +33,19 @@ const CategorySheet = () => {
     } className='bg-white shadow-lg lg:h-[500px] overflow-y-auto'>
         <div className='flex text-sm flex-wrap'>
             {
-                categoryTwo["resources"].map((item) => 
+                categoryTwo["resources"]?.map((item) => 
                     <div>
                         <p className='text-primaryblue mb-5 font-semibold'>{item.name}</p>
+
                         <ul className='space-y-3'>
-                            <li className='hover:text-darkblue cursor-pointer'>
-                                {item.name}
-                            </li>
+
+                            {childCategory(categoryThree["resources"], item.categoryId).map((item:any) =>
+                                <div>
+                                    <li className='hover:text-darkblue cursor-pointer text-black'>
+                                        {item.name}
+                                    </li>
+                                </div>
+                            )}
                         </ul>
                     </div>)
             }
