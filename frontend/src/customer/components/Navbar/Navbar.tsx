@@ -7,6 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import CategorySheet from './CategorySheet';
 
 const Navbar = () => {
     const theme = useTheme();
@@ -64,8 +65,13 @@ const Navbar = () => {
                                 }}>
                                 Become a Seller
                             </Button>
+
                         }
                     </div>
+                </div>
+
+                <div className='categorySheet absolute top-[4.41rem] left-20 right-20'>
+                    <CategorySheet/>
                 </div>
             </Box>
         </>
