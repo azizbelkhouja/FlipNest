@@ -70,7 +70,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className='categorySheet absolute top-[4.41rem] left-20 right-20'>
+                <div className='categorySheet absolute top-[4.41rem] left-20 right-20 border'>
                     <CategorySheet/>
                 </div>
             </Box>
