@@ -9,6 +9,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import CategorySheet from './CategorySheet';
 import { mainCategory } from '../../data/category/mainCategory';
+import { isTemplateExpression } from 'typescript';
 
 const Navbar = () => {
     const theme = useTheme();
@@ -32,7 +33,7 @@ const Navbar = () => {
                         <ul className='flex items-center text-white font-light'>
                             {
                                 mainCategory.map((item) => (
-                                    <li onMouseLeave={() => {setShowCategorySheet(false)}}
+                                    <li onMouseLeave={() => setShowCategorySheet(false)}
                                         onMouseEnter={() => {
                                             setShowCategorySheet(true);
                                             setSelectedCategory(item.categoryId);
@@ -78,8 +79,8 @@ const Navbar = () => {
                 </div>
 
                 <div
-                    onMouseLeave={() => {setShowCategorySheet(false)}}
-                    onMouseEnter={() => {setShowCategorySheet(true)}}
+                    onMouseLeave={() => setShowCategorySheet(false)}
+                    onMouseEnter={() => setShowCategorySheet(true)}
                     className='categorySheet absolute top-[4.41rem] left-20 right-20 border'>
                         <CategorySheet selectedCategory={selectedCategory}/>
                 </div>
