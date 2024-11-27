@@ -35,7 +35,7 @@ const Navbar = () => {
                 onMouseLeave={() => setShowCategorySheet(false)}
                 onMouseEnter={() => {
                   setShowCategorySheet(true);
-                  setSelectedCategory(item.categoryId); // Use the `categoryId` directly
+                  setSelectedCategory(item.categoryId);
                 }}
                 className="mainCategories hover:underline px-4 flex items-center cursor-pointer"
               >
@@ -77,7 +77,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {showCategorySheet && (
+        {showCategorySheet &&
           <div
             onMouseLeave={() => setShowCategorySheet(false)}
             onMouseEnter={() => setShowCategorySheet(true)}
@@ -85,7 +85,7 @@ const Navbar = () => {
           >
             <CategorySheet selectedCategory={selectedCategory} />
           </div>
-        )}
+        }
       </Box>
     </>
   );
