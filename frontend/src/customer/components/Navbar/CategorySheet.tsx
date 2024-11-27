@@ -23,37 +23,42 @@ const categoryThree:{[key:string]:any[]} = {
 }
 
 
-const CategorySheet = ({selectedCategory, setShowSheet}:any) => {
-    
-    const childCategory = (category:any, parentCategoryId:any) => {
-        return category.filter((child:any) => child.parentCategoryId == parentCategoryId)
+const CategorySheet = ({ selectedCategory }: { selectedCategory: string }) => {
+    const levelTwoCategories = categoryTwo[selectedCategory] || [];
+    const levelThreeCategories = categoryThree[selectedCategory] || [];
+  
+    if (!levelTwoCategories.length) {
+      console.warn(`No level-two categories found for "${selectedCategory}"`);
+      return null; // Don't render if there are no categories
     }
-
-  return (
-    <Box sx={
-        {zIndex: 2}
-    } className='bg-white shadow-lg lg:h-[500px] overflow-y-auto'>
-        <div className='flex text-sm flex-wrap'>
-            {                                                      
-                categoryTwo[selectedCategory]?.map((item:any, index) => 
-                    <div className={`p-8 lg:w-[20%] ${index%2===0?"bg-slate-50":"bg-white"}`}>
-                        <p className='text-primaryblue mb-5 font-semibold'>{item.name}</p>
-
-                        <ul className='space-y-3'>
-
-                            {childCategory(categoryThree[selectedCategory], item.categoryId).map((item:any) =>
-                                <div>
-                                    <li className='hover:text-darkblue cursor-pointer text-black'>
-                                        {item.name}
-                                    </li>
-                                </div>
-                            )}
-                        </ul>
-                    </div>)
-            }
+  
+    const childCategory = (category: any, parentCategoryId: any) =>
+      category.filter((child: any) => child.parentCategoryId === parentCategoryId);
+  
+    return (
+      <Box sx={{ zIndex: 2 }} className="bg-white shadow-lg lg:h-[500px] overflow-y-auto">
+        <div className="flex text-sm flex-wrap">
+          {levelTwoCategories.map((item: any, index: number) => (
+            <div
+              key={item.categoryId}
+              className={`p-8 lg:w-[20%] ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}`}
+            >
+              <p className="text-primaryblue mb-5 font-semibold">{item.name}</p>
+              <ul className="space-y-3">
+                {childCategory(levelThreeCategories, item.categoryId).map((subItem: any) => (
+                  <li
+                    key={subItem.categoryId}
+                    className="hover:text-darkblue cursor-pointer text-black"
+                  >
+                    {subItem.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-    </Box>
-  )
-}
-
-export default CategorySheet
+      </Box>
+    );
+  };
+  
+  export default CategorySheet;

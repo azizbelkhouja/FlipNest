@@ -12,7 +12,7 @@ import { mainCategory } from '../../data/category/mainCategory';
 const Navbar = () => {
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
-  const [selectedCategory, setSelectedCategory] = useState('study_resources');
+  const [selectedCategory, setSelectedCategory] = useState("study_resources");
   const [showCategorySheet, setShowCategorySheet] = useState(false);
 
   return (

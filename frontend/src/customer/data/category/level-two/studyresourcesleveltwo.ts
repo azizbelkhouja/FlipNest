@@ -1,26 +1,26 @@
 export const studyresourcesleveltwo = [
-    {
-      name: "Books",
-      categoryId: "Books",
-      parentCategoryId: "study_resources",
-      level: 2,
-    },
-    {
-      name: "Notes & Summaries",
-      categoryId: "Notes & Summaries",
-      parentCategoryId: "study_resources",
-      level: 2,
-    },
-    {
-      name: "Stationery",
-      categoryId: "Stationery",
-      parentCategoryId: "study_resources",
-      level: 2,
-    },
-    {
-      name: "Online Courses",
-      categoryId: "Online Courses",
-      parentCategoryId: "study_resources",
-      level: 2,
-    },
-  ];
+  {
+    name: "Books",
+    categoryId: "books",
+    parentCategoryId: "study_resources",
+    level: 2,
+  },
+  {
+    name: "Notes & Summaries",
+    categoryId: "notes_summaries",
+    parentCategoryId: "study_resources",
+    level: 2,
+  },
+  {
+    name: "Stationery",
+    categoryId: "stationery",
+    parentCategoryId: "study_resources",
+    level: 2,
+  },
+  {
+    name: "Online Courses",
+    categoryId: "online_courses",
+    parentCategoryId: "study_resources",
+    level: 2,
+  },
+];
