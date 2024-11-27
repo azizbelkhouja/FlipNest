@@ -31,16 +31,16 @@ const Navbar = () => {
             <ul className="flex items-center text-white font-light">
               {mainCategory.map((item) => (
                 <li
-                  key={item.categoryId}
-                  onMouseLeave={() => setShowCategorySheet(false)}
-                  onMouseEnter={() => {
-                    setShowCategorySheet(true);
-                    setSelectedCategory(item.categoryId.toLowerCase());
-                  }}
-                  className="mainCategories hover:underline px-4 flex items-center cursor-pointer"
-                >
-                  {item.name}
-                </li>
+                key={item.categoryId}
+                onMouseLeave={() => setShowCategorySheet(false)}
+                onMouseEnter={() => {
+                  setShowCategorySheet(true);
+                  setSelectedCategory(item.categoryId); // Use the `categoryId` directly
+                }}
+                className="mainCategories hover:underline px-4 flex items-center cursor-pointer"
+              >
+                {item.name}
+              </li>              
               ))}
             </ul>
           </div>
