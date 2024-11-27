@@ -2,25 +2,25 @@ export const clothingleveltwo = [
     {
       name: "T-Shirts",
       categoryId: "T-Shirts",
-      parentCategoryId: "Clothing",
+      parentCategoryId: "clothing",
       level: 2,
     },
     {
       name: "Jeans",
       categoryId: "Jeans",
-      parentCategoryId: "Clothing",
+      parentCategoryId: "clothing",
       level: 2,
     },
     {
       name: "Jackets",
       categoryId: "Jackets",
-      parentCategoryId: "Clothing",
+      parentCategoryId: "clothing",
       level: 2,
     },
     {
       name: "Footwear",
       categoryId: "Footwear",
-      parentCategoryId: "Clothing",
+      parentCategoryId: "clothing",
       level: 2,
     },
   ];

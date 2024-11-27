@@ -2,25 +2,25 @@ export const electronicsleveltwo = [
     {
       name: "Laptops",
       categoryId: "Laptops",
-      parentCategoryId: "Electronics",
+      parentCategoryId: "electronics",
       level: 2,
     },
     {
       name: "Mobile Phones",
       categoryId: "Mobile Phones",
-      parentCategoryId: "Electronics",
+      parentCategoryId: "electronics",
       level: 2,
     },
     {
       name: "Gaming Consoles",
       categoryId: "Gaming Consoles",
-      parentCategoryId: "Electronics",
+      parentCategoryId: "electronics",
       level: 2,
     },
     {
       name: "Accessories",
       categoryId: "Accessories",
-      parentCategoryId: "Electronics",
+      parentCategoryId: "electronics",
       level: 2,
     },
   ];

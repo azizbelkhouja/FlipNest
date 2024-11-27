@@ -22,18 +22,20 @@ const categoryThree:{[key:string]:any[]} = {
     furnitures: furnitureAndDormItems
 }
 
-const childCategory = (category:any, parentCategoryId:any) => {
-    return category.filter((child:any) => child.parentCategoryId == parentCategoryId)
-}
 
 const CategorySheet = ({selectedCategory, setShowSheet}:any) => {
+    
+    const childCategory = (category:any, parentCategoryId:any) => {
+        return category.filter((child:any) => child.parentCategoryId == parentCategoryId)
+    }
+
   return (
     <Box sx={
-        {zIndex: 1}
+        {zIndex: 2}
     } className='bg-white shadow-lg lg:h-[500px] overflow-y-auto'>
         <div className='flex text-sm flex-wrap'>
-            {
-                categoryTwo[selectedCategory]?.map((item, index) => 
+            {                                                      
+                categoryTwo[selectedCategory]?.map((item:any, index) => 
                     <div className={`p-8 lg:w-[20%] ${index%2===0?"bg-slate-50":"bg-white"}`}>
                         <p className='text-primaryblue mb-5 font-semibold'>{item.name}</p>
 
