@@ -15,6 +15,15 @@ const Navbar = () => {
   const [selectedCategory, setSelectedCategory] = useState("study_resources");
   const [showCategorySheet, setShowCategorySheet] = useState(false);
 
+  const handleMouseEnter = (categoryId: string) => {
+    setSelectedCategory(categoryId.toLowerCase());
+    setShowCategorySheet(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowCategorySheet(false);
+  };
+
   return (
     <>
       <Box className="sticky top-0 left-0 right-0 bg-white" sx={{ zIndex: 2 }}>
@@ -31,16 +40,14 @@ const Navbar = () => {
             <ul className="flex items-center text-white font-light">
               {mainCategory.map((item) => (
                 <li
-                key={item.categoryId}
-                onMouseLeave={() => setShowCategorySheet(false)}
-                onMouseEnter={() => {
-                  setShowCategorySheet(true);
-                  setSelectedCategory(item.categoryId);
-                }}
-                className="mainCategories hover:underline px-4 flex items-center cursor-pointer"
-              >
-                {item.name}
-              </li>              
+                  key={item.categoryId}
+                  onMouseEnter={() => handleMouseEnter(item.categoryId)}
+                  className={`mainCategories px-4 flex items-center cursor-pointer ${
+                    item.isHighlighted ? "text-darkblue font-bold hover:underline" : "hover:underline"
+                  }`}
+                >
+                  {item.name}
+                </li>
               ))}
             </ul>
           </div>
@@ -77,15 +84,17 @@ const Navbar = () => {
           </div>
         </div>
 
-        {showCategorySheet &&
-          <div
-            onMouseLeave={() => setShowCategorySheet(false)}
-            onMouseEnter={() => setShowCategorySheet(true)}
-            className="categorySheet absolute top-[4.41rem] left-20 right-20 border"
-          >
-            <CategorySheet selectedCategory={selectedCategory} />
-          </div>
-        }
+        <div
+          onMouseEnter={() => setShowCategorySheet(true)}
+          onMouseLeave={handleMouseLeave}
+           className="categorySheet absolute top-[4.41rem] left-20 right-20 border"
+        >
+          {showCategorySheet && (
+            <div>
+              <CategorySheet selectedCategory={selectedCategory} />
+            </div>
+          )}
+        </div>
       </Box>
     </>
   );
