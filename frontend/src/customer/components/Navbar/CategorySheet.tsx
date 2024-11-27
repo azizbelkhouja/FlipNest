@@ -28,8 +28,8 @@ const CategorySheet = ({ selectedCategory }: { selectedCategory: string }) => {
   const levelThreeCategories = categoryThree[selectedCategory] || [];
 
   if (!levelTwoCategories.length) {
-    console.warn(`No level-two categories found for "${selectedCategory}"`);
-    return null; // Don't render if there are no categories
+    console.warn(`No categories found for "${selectedCategory}"`);
+    return null;
   }
 
   const childCategory = (category: any, parentCategoryId: any) =>
