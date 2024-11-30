@@ -1,8 +1,42 @@
+import { Filter } from '@mui/icons-material'
 import React from 'react'
+import FilterSection from './FilterSection'
+import ProductCard from './ProductCard'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 const Product = () => {
+  
+  const theme = useTheme();
+  const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
+  
   return (
-    <div>Product</div>
+    <div className='-z-10 mt-10'>
+      <div>
+        <h1 className='text-3xl text-center font-bold text-gray-700 pb-5 px-9 uppercase space-x-2'>Iphones</h1>
+      </div>
+
+      <div className='lg:flex'>
+
+          <section className='filter_section hidden lg:block w-[20%]'>
+            <FilterSection />
+          </section>
+
+          <div className='w-full lg:w-[80%] space-y-5'>
+
+            <div className=''>
+              <div className='relative w-[50%]'>
+
+              </div>
+            </div>
+
+            <section className='products_section '>
+              <ProductCard/>
+            </section>
+
+          </div>
+      </div>
+
+    </div>
   )
 }
 
