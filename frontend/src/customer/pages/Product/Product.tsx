@@ -1,8 +1,8 @@
-import { Filter } from '@mui/icons-material'
+import { Filter, FilterAlt } from '@mui/icons-material'
 import React from 'react'
 import FilterSection from './FilterSection'
 import ProductCard from './ProductCard'
-import { useMediaQuery, useTheme } from '@mui/material'
+import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material'
 
 const Product = () => {
   
@@ -24,9 +24,22 @@ const Product = () => {
           <div className='w-full lg:w-[80%] space-y-5'>
 
             <div className=''>
-              <div className='relative w-[50%]'>
 
+              <div className='relative w-[50%]'>
+                {
+                  !isLarge && (<IconButton>
+                    <FilterAlt/>
+                  </IconButton>)
+                }
+                {
+                  !isLarge && (<Box>
+                    <FilterSection/>
+                  </Box>)
+                }
               </div>
+
+              
+
             </div>
 
             <section className='products_section '>
