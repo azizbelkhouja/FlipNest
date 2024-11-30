@@ -1,13 +1,17 @@
 import { Filter, FilterAlt } from '@mui/icons-material'
-import React from 'react'
+import React, { useState } from 'react'
 import FilterSection from './FilterSection'
 import ProductCard from './ProductCard'
-import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Divider, FormControl, IconButton, InputLabel, MenuItem, Select, useMediaQuery, useTheme } from '@mui/material'
 
 const Product = () => {
   
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
+  const [sort, setSort] = useState();
+  const handleSortChange = (event:any) => {
+    setSort(event.target.value);
+  }
   
   return (
     <div className='-z-10 mt-10'>
@@ -23,7 +27,7 @@ const Product = () => {
 
           <div className='w-full lg:w-[80%] space-y-5'>
 
-            <div className=''>
+            <div className='flex justify-between items-center px-9 h-[40px]'>
 
               <div className='relative w-[50%]'>
                 {
@@ -38,10 +42,22 @@ const Product = () => {
                 }
               </div>
 
-              
+              <FormControl size="small" sx = {{width : "200px"}}>
+                <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={sort}
+                  label="Sort"
+                  onChange={handleSortChange}
+                >
+                  <MenuItem value={"low_to_high"}>Low to High</MenuItem>
+                  <MenuItem value={"high_to_low"}>High to Low</MenuItem>
+                </Select>
+              </FormControl>
 
             </div>
-
+            <Divider/>
             <section className='products_section '>
               <ProductCard/>
             </section>
