@@ -23,6 +23,42 @@ export const furnitureAndDormItems = [
   { name: "Drawer Units", categoryId: "drawer_units", parentCategoryId: "storage_solutions" },
   { name: "Magazine Racks", categoryId: "magazine_racks", parentCategoryId: "storage_solutions" },
 
+  // Study Desks
+  { name: "Computer Desks", categoryId: "computer_desks", parentCategoryId: "study_desks" },
+  { name: "Writing Desks", categoryId: "writing_desks", parentCategoryId: "study_desks" },
+  { name: "Standing Desks", categoryId: "standing_desks", parentCategoryId: "study_desks" },
+  { name: "Corner Desks", categoryId: "corner_desks", parentCategoryId: "study_desks" },
+  { name: "Floating Desks", categoryId: "floating_desks", parentCategoryId: "study_desks" },
+  { name: "Adjustable Desks", categoryId: "adjustable_desks", parentCategoryId: "study_desks" },
+  { name: "Compact Desks", categoryId: "compact_desks", parentCategoryId: "study_desks" },
+  { name: "Desks with Drawers", categoryId: "desks_with_drawers", parentCategoryId: "study_desks" },
+  { name: "Executive Desks", categoryId: "executive_desks", parentCategoryId: "study_desks" },
+  { name: "Gaming Desks", categoryId: "gaming_desks", parentCategoryId: "study_desks" },
+
+  // Chairs
+  { name: "Office Chairs", categoryId: "office_chairs", parentCategoryId: "chairs" },
+  { name: "Recliners", categoryId: "recliners", parentCategoryId: "chairs" },
+  { name: "Accent Chairs", categoryId: "accent_chairs", parentCategoryId: "chairs" },
+  { name: "Gaming Chairs", categoryId: "gaming_chairs", parentCategoryId: "chairs" },
+  { name: "Dining Chairs", categoryId: "dining_chairs", parentCategoryId: "chairs" },
+  { name: "Swivel Chairs", categoryId: "swivel_chairs", parentCategoryId: "chairs" },
+  { name: "Folding Chairs", categoryId: "folding_chairs", parentCategoryId: "chairs" },
+  { name: "Wooden Chairs", categoryId: "wooden_chairs", parentCategoryId: "chairs" },
+  { name: "Bean Bag Chairs", categoryId: "bean_bag_chairs", parentCategoryId: "chairs" },
+  { name: "Stools", categoryId: "stools", parentCategoryId: "chairs" },
+
+  // Decor & Lighting
+  { name: "Wall Art", categoryId: "wall_art", parentCategoryId: "decor_lighting" },
+  { name: "Table Lamps", categoryId: "table_lamps", parentCategoryId: "decor_lighting" },
+  { name: "Floor Lamps", categoryId: "floor_lamps", parentCategoryId: "decor_lighting" },
+  { name: "String Lights", categoryId: "string_lights", parentCategoryId: "decor_lighting" },
+  { name: "Curtains", categoryId: "curtains", parentCategoryId: "decor_lighting" },
+  { name: "Rugs", categoryId: "rugs", parentCategoryId: "decor_lighting" },
+  { name: "Throw Pillows", categoryId: "throw_pillows", parentCategoryId: "decor_lighting" },
+  { name: "Mirrors", categoryId: "mirrors", parentCategoryId: "decor_lighting" },
+  { name: "Candles", categoryId: "candles", parentCategoryId: "decor_lighting" },
+  { name: "Shelf Decor", categoryId: "shelf_decor", parentCategoryId: "decor_lighting" }, 
+
   // Sofas & Seating
   { name: "Sectional Sofas", categoryId: "sectional_sofas", parentCategoryId: "sofas_seating" },
   { name: "Recliners", categoryId: "recliners", parentCategoryId: "sofas_seating" },
