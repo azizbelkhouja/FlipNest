@@ -10,7 +10,7 @@ const ProductCard = () => {
     <>
       <div className='group px-4 relative'>
         <div className='card'>
-          {images.map((item) => <img className='card-media object-top' src="" alt="" />)}
+          {images.map((item) => <img className='card-media object-top' src={item} alt="" />)}
           
         </div>
       </div>
