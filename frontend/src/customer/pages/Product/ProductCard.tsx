@@ -24,6 +24,7 @@ const ProductCard = () => {
         clearInterval(interval);
         interval = null;
     }
+    return () => clearInterval(interval);
   }, [isHovered])
   
 
