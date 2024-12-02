@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ProductCard.css'
 
 const images = [
@@ -7,6 +7,11 @@ const images = [
 ]
 
 const ProductCard = () => {
+
+  const [currentImage, setCurrentImage] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  
+
   return (
     <>
       <div className='group px-4 relative'>
