@@ -18,7 +18,7 @@ const ProductCard = () => {
     if(isHovered) {
         interval = setInterval(() => {
           setCurrentImage((prevImage)=>(prevImage + 1) % images.length);
-        }, 1000);
+        }, 700);
     }
     else if(interval) {
         clearInterval(interval);
