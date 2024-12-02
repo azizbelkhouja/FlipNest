@@ -7,6 +7,24 @@ const FilterSection = () => {
   const handleExpendColor = () => {
     setExpendColor(!expendColor)
   }
+  const updateFilterParams = (e: any) => {
+    const { value, name } = e.target;
+    if (value) {
+      searchParams.set(name, value);
+    } else {
+      searchParams.delete(name);
+    }
+    setSearchParams(searchParams);
+  };
+  
+  const clearAllFilters = () => {
+    console.log("clearAllFilters", searchParams);
+    searchParams.forEach((value: any, key: any) => {
+      searchParams.delete(key);
+    });
+    setSearchParams(searchParams);
+  };
+  
 
   return (
     <div className='-z-50 space-y-5 bg-white'>
@@ -54,6 +72,7 @@ const FilterSection = () => {
           </button>
         </div>
       </section>
+
       </div>
     </div>
   )
