@@ -21,12 +21,12 @@ const FilterSection = () => {
               pb: '14px'
 
             }}
-            className='text-2xl font-semibold' id='color'>Color</FormLabel
-          >
+            className='text-2xl font-semibold' id='color'>Color
+          </FormLabel>
           <RadioGroup
             aria-labelledby="color"
             defaultValue=""
-            name="color"
+            name="radio-buttons-group"
           >
             <FormControlLabel value="female" control={<Radio />} label="Female" />
             <FormControlLabel value="male" control={<Radio />} label="Male" />
