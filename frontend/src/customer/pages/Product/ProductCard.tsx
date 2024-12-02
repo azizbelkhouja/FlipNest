@@ -32,9 +32,13 @@ const ProductCard = () => {
     <>
       <div className='group px-4 relative'>
 
-        <div className='card'>
+        <div className='card' 
+          onMouseEnter = {() => setIsHovered(true)}
+          onMouseLeave = {() => setIsHovered(false)}
+        >
+          
           {images.map((item, index) => <img className='card-media object-top' src={item} alt="" 
-          style={{transform: `translateX(${(index-1)*100}%)`}}/>)}
+          style={{transform: `translateX(${(index-currentImage)*100}%)`}}/>)}
         </div>
 
       </div>
