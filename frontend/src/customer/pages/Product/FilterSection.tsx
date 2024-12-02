@@ -57,6 +57,7 @@ const FilterSection = () => {
             aria-labelledby="color"
             defaultValue=""
             name="color"
+            onChange={updateFilterParams}
           >
             {colors.slice(0, expendColor?colors.length:5).map((item) => <FormControlLabel value="color" control={<Radio />} label={
               <div className='flex items-center gap-3'>
