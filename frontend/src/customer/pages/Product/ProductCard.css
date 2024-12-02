@@ -11,3 +11,17 @@
     cursor: pointer;
     object-fit: cover;
 }
+.indicator {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.indicator-button {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
