@@ -1,5 +1,6 @@
 import { Button, Divider, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import React from 'react'
+import { colors } from '../../data/Filter/color'
 
 const FilterSection = () => {
   return (
@@ -26,11 +27,19 @@ const FilterSection = () => {
           <RadioGroup
             aria-labelledby="color"
             defaultValue=""
-            name="radio-buttons-group"
+            name="color"
           >
-            <FormControlLabel value="female" control={<Radio />} label="Female" />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
+            {colors.map((item) => <FormControlLabel value="" control={<Radio />} label={
+              <div className='flex items-center gap-3'>
+                <p>{item.name}</p>
+                <p 
+                  style={{backgroundColor: item.hex}}
+                  className={`h-5 w-5 rounded-full ${item.name === "White"?"border":""}`}
+                >
+                </p>
+              </div>
+            } />)}
+            
           </RadioGroup>
         </FormControl>
       </section>

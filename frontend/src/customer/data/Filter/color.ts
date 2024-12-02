@@ -48,5 +48,4 @@ export const colors = [
     { "name": "Pine Green", "hex": "#01796F" },
     { "name": "Brick Red", "hex": "#CB4154" },
     { "name": "Rose", "hex": "#FF007F" }
-  ];
-  
+  ];  
