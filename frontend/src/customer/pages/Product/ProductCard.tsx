@@ -43,7 +43,7 @@ const ProductCard = () => {
           {images.map((item, index) => <img className='card-media object-top' src={item} alt="" 
           style={{transform: `translateX(${(index-currentImage)*100}%)`}}/>)}
 
-          {
+          { isHovered &&
             <div className='indicator flex flex-col items-center space-y-2'>
               <div className='flex gap-3'>
 
