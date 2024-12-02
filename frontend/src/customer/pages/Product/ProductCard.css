@@ -25,3 +25,6 @@
     border-radius: 50%;
     cursor: pointer;
 }
+.indicator-button.active {
+    background-color: white;
+}
