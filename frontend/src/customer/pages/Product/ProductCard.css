@@ -28,3 +28,7 @@
 .indicator-button.active {
     background-color: white;
 }
+.thin-line-through {
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
