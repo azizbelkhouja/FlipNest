@@ -12,7 +12,8 @@ const ProductCard = () => {
       <div className='group px-4 relative'>
 
         <div className='card'>
-          {images.map((item) => <img className='card-media object-top' src={item} alt="" />)}
+          {images.map((item, index) => <img className='card-media object-top' src={item} alt="" 
+          style={{transform: `translateX(${(index-1)*100}%)`}}/>)}
         </div>
 
       </div>
