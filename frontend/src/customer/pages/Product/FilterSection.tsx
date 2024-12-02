@@ -1,9 +1,12 @@
 import { Button, Divider, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { colors } from '../../data/Filter/color'
 
 const FilterSection = () => {
   const [expendColor, setExpendColor] = useState(false);
+  const handleExpendColor = () => {
+    setExpendColor(!expendColor)
+  }
 
   return (
     <div className='-z-50 space-y-5 bg-white'>
@@ -44,7 +47,9 @@ const FilterSection = () => {
           </RadioGroup>
         </FormControl>
         <div>
-          <button>
+          <button
+            onClick={handleExpendColor}
+            className='text-primaryblue cursor-pointer hover:text-darkblue flex items-center'>
             {expendColor ? 'Show Less' : `+${colors.length - 5} more`}
           </button>
         </div>
