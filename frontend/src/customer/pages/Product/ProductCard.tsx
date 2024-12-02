@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProductCard.css'
 
 const images = [
@@ -8,8 +8,23 @@ const images = [
 
 const ProductCard = () => {
 
-  const [currentImage, setCurrentImage] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+
+    let interval:any;
+
+    if(isHovered) {
+        interval = setInterval(() => {
+          setCurrentImage((prevImage)=>(prevImage + 1) % images.length);
+        }, 1000);
+    }
+    else if(interval) {
+        clearInterval(interval);
+        interval = null;
+    }
+  }, [isHovered])
   
 
   return (
