@@ -66,7 +66,7 @@ const Product = () => {
               {[1,2,3,4,5,6,7,8,9,10].map((item) => <ProductCard />)}
             </section>
 
-            <div>
+            <div className='flex justify-center py-10'>
               <Pagination 
                 onChange={(e, value) => handlePageChange(value)}
                 count={10} variant="outlined"
