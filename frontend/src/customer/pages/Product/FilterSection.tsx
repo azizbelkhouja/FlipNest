@@ -13,11 +13,20 @@ const FilterSection = () => {
       <Divider/>
       <section>
         <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+          <FormLabel
+            sx={{
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: '#048690',
+              pb: '14px'
+
+            }}
+            className='text-2xl font-semibold' id='color'>Color</FormLabel
+          >
           <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
-            name="radio-buttons-group"
+            aria-labelledby="color"
+            defaultValue=""
+            name="color"
           >
             <FormControlLabel value="female" control={<Radio />} label="Female" />
             <FormControlLabel value="male" control={<Radio />} label="Male" />
