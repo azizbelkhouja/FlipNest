@@ -29,7 +29,7 @@ const FilterSection = () => {
             defaultValue=""
             name="color"
           >
-            {colors.map((item) => <FormControlLabel value="" control={<Radio />} label={
+            {colors.map((item) => <FormControlLabel value="color" control={<Radio />} label={
               <div className='flex items-center gap-3'>
                 <p>{item.name}</p>
                 <p 
