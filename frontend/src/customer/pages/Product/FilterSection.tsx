@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { colors } from '../../data/Filter/color'
 import { useSearchParams } from 'react-router-dom';
 import { price } from '../../data/Filter/price';
+import { discount } from '../../data/Filter/discount';
 
 const FilterSection = () => {
 
@@ -97,6 +98,36 @@ const FilterSection = () => {
             defaultValue=""
           >
             {price.map((item, index) => (
+              <FormControlLabel
+                key={item.name}
+                value={item.value}
+                control={<Radio size="small" />}
+                label={item.name}
+              />
+            ))}
+          </RadioGroup>
+
+        </FormControl>
+      </section>
+
+      <section>
+        <FormControl>
+          <FormLabel
+            sx={{
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: '#048690',
+              pb: '14px'
+            }}
+            className='text-2xl font-semibold' id='discount'>Discount
+          </FormLabel>
+          <RadioGroup
+            name="discount"
+            onChange={updateFilterParams}
+            aria-labelledby="brand"
+            defaultValue=""
+          >
+            {discount.map((item, index) => (
               <FormControlLabel
                 key={item.name}
                 value={item.value}
