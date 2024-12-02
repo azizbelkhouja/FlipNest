@@ -1,12 +1,18 @@
 import { Button, Divider, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import React, { useState } from 'react'
 import { colors } from '../../data/Filter/color'
+import { useSearchParams } from 'react-router-dom';
+import { price } from '../../data/Filter/price';
 
 const FilterSection = () => {
+
   const [expendColor, setExpendColor] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  
   const handleExpendColor = () => {
     setExpendColor(!expendColor)
   }
+
   const updateFilterParams = (e: any) => {
     const { value, name } = e.target;
     if (value) {
@@ -42,9 +48,9 @@ const FilterSection = () => {
               fontWeight: 'bold',
               color: '#048690',
               pb: '14px'
-
             }}
             className='text-2xl font-semibold' id='color'>Color
+          
           </FormLabel>
           <RadioGroup
             aria-labelledby="color"
@@ -73,6 +79,35 @@ const FilterSection = () => {
         </div>
       </section>
 
+      <section>
+        <FormControl>
+          <FormLabel
+            sx={{
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: '#048690',
+              pb: '14px'
+            }}
+            className='text-2xl font-semibold' id='price'>Price
+          </FormLabel>
+          <RadioGroup
+            name="price"
+            onChange={updateFilterParams}
+            aria-labelledby="price"
+            defaultValue=""
+          >
+            {price.map((item, index) => (
+              <FormControlLabel
+                key={item.name}
+                value={item.value}
+                control={<Radio size="small" />}
+                label={item.name}
+              />
+            ))}
+          </RadioGroup>
+
+        </FormControl>
+      </section>
       </div>
     </div>
   )
