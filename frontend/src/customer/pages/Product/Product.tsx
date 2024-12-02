@@ -2,15 +2,19 @@ import { Filter, FilterAlt } from '@mui/icons-material'
 import React, { useState } from 'react'
 import FilterSection from './FilterSection'
 import ProductCard from './ProductCard'
-import { Box, Divider, FormControl, IconButton, InputLabel, MenuItem, Select, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Divider, FormControl, IconButton, InputLabel, MenuItem, Select, useMediaQuery, useTheme, Pagination } from '@mui/material'
 
 const Product = () => {
   
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
   const [sort, setSort] = useState();
+  const [page, setPage] = useState(1);
   const handleSortChange = (event:any) => {
     setSort(event.target.value);
+  }
+  const handlePageChange = (value:number) => {
+    setPage(value);
   }
   
   return (
@@ -63,6 +67,14 @@ const Product = () => {
             </section>
 
           </div>
+
+          <div>
+          <Pagination 
+            onChange={(e, value) => handlePageChange(value)}
+            count={10} variant="outlined" color="primary" 
+          />
+          </div>
+
       </div>
 
     </div>
