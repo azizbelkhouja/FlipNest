@@ -43,6 +43,11 @@ const FilterSection = () => {
             
           </RadioGroup>
         </FormControl>
+        <div>
+          <button>
+            {expendColor ? 'Show Less' : `+${colors.length - 5} more`}
+          </button>
+        </div>
       </section>
       </div>
     </div>
