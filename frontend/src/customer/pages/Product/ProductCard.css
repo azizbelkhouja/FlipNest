@@ -32,3 +32,14 @@
     text-decoration: line-through;
     text-decoration-thickness: 1px;
 }
+.group-hover-effect {
+    padding: 1rem;
+    transition: transform 0.3s;
+}
+.group:hover .group-hover-effect {
+    transform: translateY(0.25rem);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
