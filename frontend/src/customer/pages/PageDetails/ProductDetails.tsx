@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import StarIcon from '@mui/icons-material/Star';
 import Divider from '@mui/material/Divider';
-import { Add, LocalShipping, Remove, Shield, Wallet, WorkspacePremium } from '@mui/icons-material';
+import { Add, AddShoppingCart, FavoriteBorder, LocalShipping, Remove, Shield, Wallet, WorkspacePremium } from '@mui/icons-material';
 import { Button } from '@mui/material';
 
 const ProductDetails = () => {
@@ -69,6 +69,24 @@ const ProductDetails = () => {
                 <Add/>
               </Button>
             </div>
+          </div>
+          <div className="mt-12 flex items-center gap-5">
+            <Button
+              fullWidth
+              variant="contained"
+              startIcon={<AddShoppingCart/>}
+              sx={{py:"1rem"}}
+            >
+              Add To Bag
+            </Button>
+            <Button
+              fullWidth
+              variant="outlined"
+              startIcon={<FavoriteBorder/>}
+              sx={{py:"1rem"}}
+            >
+              WishList
+            </Button>
           </div>
         </section>
       </div>
