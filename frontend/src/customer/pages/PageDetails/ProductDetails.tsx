@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import StarIcon from '@mui/icons-material/Star';
 import Divider from '@mui/material/Divider';
-import { LocalShipping, Shield, Wallet, WorkspacePremium } from '@mui/icons-material';
+import { Add, LocalShipping, Remove, Shield, Wallet, WorkspacePremium } from '@mui/icons-material';
+import { Button } from '@mui/material';
 
 const ProductDetails = () => {
+  const [quantity, setQuantity] = useState(1);
+  
   return (
     <div className='px-5 lg:px-20 pt-20'>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
@@ -50,6 +53,21 @@ const ProductDetails = () => {
             <div className="flex items-center gap-4">
               <Wallet sx={{color:"lightblue"}}/>
               <p>Flexible Payment Options - Cash, Card, or Digital Wallets</p>
+            </div>
+          </div>
+
+          <div className='mt-7 space-y-2'>
+            <h1>QUANTITY</h1>
+            <div className="flex items-center gap-2 w-[140px]">
+              <Button disabled={quantity==1} onClick={() => setQuantity(quantity-1)}>
+                <Remove/>
+              </Button>
+              <span>
+                {quantity}
+              </span>
+              <Button onClick={() => setQuantity(quantity+1)}>
+                <Add/>
+              </Button>
             </div>
           </div>
         </section>
