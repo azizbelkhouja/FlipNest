@@ -68,7 +68,7 @@ const ProductCard = () => {
           </div>
           <div className='price flex items-center gap-3'>
             <span className='font-sans text-gray-800'>1,399€</span>
-            <span className='thin-line-through text-gray-400'>1,799€</span>
+            <span className='font-sans thin-line-through text-gray-400'>1,799€</span>
             <span className='text-primaryblue font-semibold'>25%</span>
           </div>
 
