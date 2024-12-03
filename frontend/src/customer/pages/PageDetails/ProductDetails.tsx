@@ -88,6 +88,9 @@ const ProductDetails = () => {
               WishList
             </Button>
           </div>
+          <div className="mt-5">
+            <p>Experience the pinnacle of innovation with the iPhone 16 Pro Max. Featuring a stunning 6.9-inch Super Retina XDR display, a powerful A18 Bionic chip for lightning-fast performance, and an advanced triple-camera system for breathtaking photos and videos.</p>
+          </div>
         </section>
       </div>
     </div>
