@@ -3,6 +3,7 @@ import StarIcon from '@mui/icons-material/Star';
 import Divider from '@mui/material/Divider';
 import { Add, AddShoppingCart, FavoriteBorder, LocalShipping, Remove, Shield, Wallet, WorkspacePremium } from '@mui/icons-material';
 import { Button } from '@mui/material';
+import SimilarProduct from './SimilarProduct';
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -91,9 +92,17 @@ const ProductDetails = () => {
           <div className="mt-5">
             <p>Experience the pinnacle of innovation with the iPhone 16 Pro Max. Featuring a stunning 6.9-inch Super Retina XDR display, a powerful A18 Bionic chip for lightning-fast performance, and an advanced triple-camera system for breathtaking photos and videos.</p>
           </div>
-          
+
         </section>
       </div>
+
+      <div className='mt-20'>
+        <h1 className='text-lg font-bold'>Similar Products</h1>
+        <div className="pt-5">
+          <SimilarProduct />
+        </div>
+      </div>
+
     </div>
   )
 }
