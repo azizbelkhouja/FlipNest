@@ -1,4 +1,4 @@
-import { Avatar, Box, Grid2 } from '@mui/material'
+import { Avatar, Box, Grid2, Rating } from '@mui/material'
 import React from 'react'
 
 const ReviewCard = () => {
@@ -19,6 +19,7 @@ const ReviewCard = () => {
               <p className='opacity-70'>2024-12-06 5:57pm</p>
             </div>
           </div>
+          <Rating value={4.5} readOnly precision={.5}/>
         </Grid2>
       </Grid2>
     </div>
