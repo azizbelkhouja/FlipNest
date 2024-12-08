@@ -1,10 +1,13 @@
-import { Avatar, Box, Grid2, Rating } from '@mui/material'
+import { Delete } from '@mui/icons-material'
+import { Avatar, Box, Grid2, IconButton, Rating } from '@mui/material'
+import { red } from '@mui/material/colors'
 import React from 'react'
 
 const ReviewCard = () => {
   return (
     <div className='flex justify-between'>
-      <Grid2 container spacing={8}>
+
+      <Grid2 container spacing={9}>
         <Grid2 size={{xs: 1}}>
           <Box>
             <Avatar className='text-white' sx={{width:56, height:56, bgcolor: "#9155FD"}}>
@@ -26,6 +29,11 @@ const ReviewCard = () => {
           </div>
         </Grid2>
       </Grid2>
+      
+      <IconButton>
+        <Delete sx={{color:red[700]}} />
+      </IconButton>
+
     </div>
   )
 }
