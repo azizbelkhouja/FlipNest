@@ -35,7 +35,7 @@ const ProductDetails = () => {
             <div className='price flex items-center gap-3 mt-5 text-2xl'>
               <span className='font-sans text-gray-800'>1,399€</span>
               <span className='font-sans line-through text-gray-400'>1,799€</span>
-              <span className='text-primaryblue font-semibold'>25%</span>
+              <span className='text-primaryblue font-semibold'>25% OFF</span>
             </div>
             <p className='text-sm text-personalgrey'>IVA included</p>
           </div>
