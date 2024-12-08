@@ -30,9 +30,11 @@ const ReviewCard = () => {
         </Grid2>
       </Grid2>
       
-      <IconButton>
-        <Delete sx={{color:red[700]}} />
-      </IconButton>
+      <div>
+        <IconButton>
+          <Delete sx={{color:red[700]}} />
+        </IconButton>
+      </div>
 
     </div>
   )

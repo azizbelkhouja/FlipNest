@@ -1,4 +1,6 @@
 import React from 'react'
+import ReviewCard from './ReviewCard'
+import { Divider } from '@mui/material'
 
 const Review = () => {
   return (
@@ -19,6 +21,14 @@ const Review = () => {
             <p className='text-sm text-personalgrey'>IVA included</p>
           </div>
         </div>
+      </section>
+
+      <section className='space-y-5 w-full'>
+        {[1,1,1,1,1,1].map((item) => 
+          <div className='space-y-5'>
+            <ReviewCard/>
+            <Divider/>
+          </div> )}
       </section>
     </div>
   )
