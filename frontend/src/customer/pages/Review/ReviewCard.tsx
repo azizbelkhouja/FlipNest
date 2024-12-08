@@ -20,6 +20,10 @@ const ReviewCard = () => {
             </div>
           </div>
           <Rating value={4.5} readOnly precision={.5}/>
+          <p>perfetto</p>
+          <div>
+            <img className='w-24 h-24 object-cover' src="https://i.ebayimg.com/images/g/SqIAAOSwksVnTj0g/s-l1600.webp" alt="" />
+          </div>
         </Grid2>
       </Grid2>
     </div>
