@@ -1,5 +1,5 @@
-import { Add, Remove } from '@mui/icons-material'
-import { Button, Divider } from '@mui/material'
+import { Add, Close, Remove } from '@mui/icons-material'
+import { Button, Divider, IconButton } from '@mui/material'
 import React from 'react'
 
 const CartItem = () => {
@@ -26,25 +26,40 @@ const CartItem = () => {
         <p className='text-sm'>3 days return available</p>
         <p className='text-sm text-gray-500'><strong>Quantity :</strong>3</p>
         </div>
-        <Divider />
-        <div className="px-5 py-2 flex justify-between items-center">
+      </div>
 
-          <div className='flex items-center gap-2 w-[140px] justify-between'>
+      <Divider />
+
+      <div className="flex justify-between items-center">
+
+      <div className="px-5 py-2 flex justify-between items-center">
+
+        <div className='flex items-center gap-2 w-[140px] justify-between'>
 
           <Button disabled={true} onClick={handleUpdateQuantity}>
-                <Remove/>
-              </Button>
-              <span>
-                {3}
-              </span>
-              <Button onClick={handleUpdateQuantity}>
-                <Add/>
-              </Button>
-
-          </div>
+              <Remove/>
+            </Button>
+            <span>
+              {3}
+            </span>
+            <Button onClick={handleUpdateQuantity}>
+              <Add/>
+            </Button>
 
         </div>
 
+        </div>
+
+        <div className="pr-5">
+        <p className='font-medium text-gray-700 '>1400€</p>
+        </div>
+
+      </div>
+
+      <div className='absolute top-1 right-1'>
+        <IconButton>
+          <Close/>
+        </IconButton>
       </div>
 
     </div>
