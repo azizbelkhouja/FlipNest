@@ -1,6 +1,13 @@
+import { Add, Remove } from '@mui/icons-material'
+import { Button, Divider } from '@mui/material'
 import React from 'react'
 
 const CartItem = () => {
+
+  const handleUpdateQuantity = () => {
+    // Update quantity
+  }
+
   return (
     <div className='border rounded-md relative'>
       
@@ -17,7 +24,25 @@ const CartItem = () => {
         </p>
         <p className='text-xs text-gray-400'><strong>Sold By: </strong>Aziz</p>
         <p className='text-sm'>3 days return available</p>
-        <p><strong>Quantity :</strong>3</p>
+        <p className='text-sm text-gray-500'><strong>Quantity :</strong>3</p>
+        </div>
+        <Divider />
+        <div className="px-5 py-2 flex justify-between items-center">
+
+          <div className='flex items-center gap-2 w-[140px] justify-between'>
+
+          <Button disabled={true} onClick={handleUpdateQuantity}>
+                <Remove/>
+              </Button>
+              <span>
+                {3}
+              </span>
+              <Button onClick={handleUpdateQuantity}>
+                <Add/>
+              </Button>
+
+          </div>
+
         </div>
 
       </div>
