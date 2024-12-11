@@ -12,11 +12,11 @@ const CartItem = () => {
 
         <div className='space-y-2'>
         <h1 className="font-semibold text-lg">Iphone 16</h1>
-        <p>
+        <p className='text-gray-600 font-medium text-sm'>
           The iPhone 16 features a stunning new design, advanced camera system, and the latest A16 Bionic chip for unparalleled  performance.
         </p>
-        <p><strong>Sold By: </strong>Aziz</p>
-        <p>3 days return available</p>
+        <p className='text-xs text-gray-400'><strong>Sold By: </strong>Aziz</p>
+        <p className='text-sm'>3 days return available</p>
         <p><strong>Quantity :</strong>3</p>
         </div>
 
