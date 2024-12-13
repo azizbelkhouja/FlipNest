@@ -16,10 +16,17 @@ const Cart = () => {
         <div className='col-span-1 text-sm space-y-3'>
 
           <div className='border rounded-md px-5 py-3 space-y-5'>
-            <div className="flex gap-3 text-sm items-center">
-              <LocalOffer sx={{color:primaryblue, fontSize:"17px" }}/>
+            <div>
+
+              <div className="flex gap-3 text-sm items-center">
+
+                <LocalOffer sx={{color:primaryblue, fontSize:"17px" }}/>
+
+              </div>
+              
+              <span>Apply Coupons</span>
+
             </div>
-            <span>Apply Coupons</span>
           </div>
 
         </div>
