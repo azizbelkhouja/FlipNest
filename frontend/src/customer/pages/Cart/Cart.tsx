@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartItem from './CartItem'
 import { LocalOffer } from '@mui/icons-material'
 import { Button, TextField } from '@mui/material';
@@ -6,6 +6,10 @@ import { Button, TextField } from '@mui/material';
 const primaryblue = '#048690'; // Define the primaryblue color
 
 const Cart = () => {
+  const [couponCode, setCouponCode] = useState('');
+  const handleChange = (e:any) => {
+    setCouponCode(e.target.value);
+  }
   return (
     <div className='pt-10 px-5 sm:px-10 md:px-60 min-h-screen'>
 
@@ -33,10 +37,10 @@ const Cart = () => {
 
               </div>
 
-              <div>
+              <div className='flex justify-between items-center'>
 
-              <TextField id="outlined-basic" placeholder='Coupon Code' size='small' variant="outlined" />
-              <Button variant='contained' sx={{backgroundColor:primaryblue, color:'white'}}>Apply</Button>
+              <TextField onChange={handleChange} id="outlined-basic" placeholder='Coupon Code' size='small' variant="outlined" />
+              <Button variant='outlined' size='small' sx={{color:primaryblue, border:'hidden'}}>Apply</Button>
 
               </div>
 
