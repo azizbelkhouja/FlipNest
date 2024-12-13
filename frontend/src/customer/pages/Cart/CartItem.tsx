@@ -24,7 +24,7 @@ const CartItem = () => {
         </p>
         <p className='text-xs text-gray-400'><strong>Sold By: </strong>Aziz</p>
         <p className='text-sm'>3 days return available</p>
-        <p className='text-sm text-gray-500'><strong>Quantity : </strong>3</p>
+        <p className='text-sm text-gray-500'><strong>Quantity: </strong>3</p>
         </div>
       </div>
 
