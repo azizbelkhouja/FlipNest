@@ -38,11 +38,32 @@ const Cart = () => {
               </div>
 
               <div className='flex justify-between items-center'>
-
-              <TextField onChange={handleChange} id="outlined-basic" placeholder='Coupon Code' size='small' variant="outlined" />
-              <Button variant='outlined' size='small' sx={{color:primaryblue, border:'hidden'}}>Apply</Button>
-
+                <TextField
+                  onChange={handleChange}
+                  id="outlined-basic"
+                  placeholder="Coupon Code"
+                  size="small"
+                  variant="outlined"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: primaryblue, // Use your primary blue color variable
+                      },
+                    },
+                  }}
+                />
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    color: primaryblue,
+                    border: 'hidden',
+                  }}
+                >
+                  Apply
+                </Button>
               </div>
+
 
           </div>
 
