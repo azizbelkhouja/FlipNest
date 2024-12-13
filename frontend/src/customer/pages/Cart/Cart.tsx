@@ -1,5 +1,8 @@
 import React from 'react'
 import CartItem from './CartItem'
+import { LocalOffer } from '@mui/icons-material'
+
+const primaryblue = '#048690'; // Define the primaryblue color
 
 const Cart = () => {
   return (
@@ -10,15 +13,19 @@ const Cart = () => {
           {[1,1,1,1,1,1,1].map((item) => <CartItem />)}
         </div>
 
-        <div className='col-span-1 text-sm space-y-3 border'>
+        <div className='col-span-1 text-sm space-y-3'>
 
-          <div>
-
+          <div className='border rounded-md px-5 py-3 space-y-5'>
+            <div className="flex gap-3 text-sm items-center">
+              <LocalOffer sx={{color:primaryblue, fontSize:"17px" }}/>
+            </div>
+            <span>Apply Coupons</span>
           </div>
 
         </div>
 
       </div>
+
     </div>
   )
 }
