@@ -2,6 +2,7 @@ import { Add, Close, Remove } from '@mui/icons-material'
 import { Button, Divider, IconButton } from '@mui/material'
 import React from 'react'
 
+const primaryblue = '#048690'; // Define the primaryblue color
 const CartItem = () => {
 
   const handleUpdateQuantity = () => {
@@ -43,7 +44,7 @@ const CartItem = () => {
               {3}
             </span>
             <Button onClick={handleUpdateQuantity}>
-              <Add/>
+              <Add sx={{color: primaryblue}}/>
             </Button>
 
         </div>
