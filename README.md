@@ -5,7 +5,7 @@ Welcome to FlipNest, the Fullstack Multi-Vendor E-Commerce Shopping Project repo
 ## 🛠️ Technologies Being Used
 
 ### Frontend:
-- React.js
+- React
 - TypeScript
 - Redux Toolkit
 - Tailwind CSS
