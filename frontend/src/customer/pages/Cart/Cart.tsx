@@ -37,7 +37,7 @@ const Cart = () => {
 
               </div>
 
-              {false ? <div className='flex justify-between items-center'>
+              {true ? <div className='flex justify-between items-center'>
                         <TextField
                           onChange={handleChange}
                           id="outlined-basic"
@@ -65,7 +65,7 @@ const Cart = () => {
                        </div>
                   : <div className='flex'>
                     <div className='p-1 pl-5 pr-3 border rounded-md flex gap-2 items-center'>
-                        <span className=''>Applied</span>
+                        <span className=''>AZIZ30 Applied</span>
                         <IconButton size='small'>
                           <Close className='text-red-600'/>
                         </IconButton>
