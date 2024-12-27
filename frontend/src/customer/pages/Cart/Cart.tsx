@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CartItem from './CartItem'
-import { LocalOffer } from '@mui/icons-material'
-import { Button, TextField } from '@mui/material';
+import { Close, LocalOffer } from '@mui/icons-material'
+import { Button, dividerClasses, IconButton, TextField } from '@mui/material';
 
 const primaryblue = '#048690'; // Define the primaryblue color
 
@@ -37,33 +37,42 @@ const Cart = () => {
 
               </div>
 
-              <div className='flex justify-between items-center'>
-                <TextField
-                  onChange={handleChange}
-                  id="outlined-basic"
-                  placeholder="Coupon Code"
-                  size="small"
-                  variant="outlined"
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: primaryblue, // Use your primary blue color variable
-                      },
-                    },
-                  }}
-                />
-                <Button
-                  variant="outlined"
-                  size="small"
-                  sx={{
-                    color: primaryblue,
-                    border: 'hidden',
-                  }}
-                >
-                  Apply
-                </Button>
-              </div>
-
+              {false ? <div className='flex justify-between items-center'>
+                        <TextField
+                          onChange={handleChange}
+                          id="outlined-basic"
+                          placeholder="Coupon Code"
+                          size="small"
+                          variant="outlined"
+                          sx={{
+                            '& .MuiOutlinedInput-root': {
+                              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                borderColor: primaryblue,
+                              },
+                            },
+                          }}
+                        />
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          sx={{
+                            color: primaryblue,
+                            border: 'hidden',
+                          }}
+                        >
+                          Apply
+                        </Button>
+                       </div>
+                  : <div className='flex'>
+                    <div className='p-1 pl-5 pr-3 border rounded-md flex gap-2 items-center'>
+                        <span className=''>Applied</span>
+                        <IconButton size='small'>
+                          <Close className='text-red-600'/>
+                        </IconButton>
+                    </div>
+                  </div>
+              
+              }
 
           </div>
 
