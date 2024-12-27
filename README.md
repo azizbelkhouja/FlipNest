@@ -2,6 +2,11 @@
 
 Welcome to FlipNest, the Fullstack Multi-Vendor E-Commerce Shopping Project repository! This project is a work in progress and aims to build a comprehensive e-commerce application using React. for the front-end and Spring Boot for the backend. Once completed, it will offer a complete online shopping experience with features like product browsing, cart management, and order processing.
 
+## 🚧 Current Status
+In Progress
+
+---
+
 ## 🛠️ Technologies Being Used
 
 ### Frontend:
@@ -68,11 +73,6 @@ Learn how to connect the frontend to the backend using Axios for API calls, Redu
 - IntelliJ IDEA
 - VS Code
 - MySQL
-
----
-
-## 🚧 Current Status
-In Progress
 
 ---
 
