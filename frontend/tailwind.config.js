@@ -10,7 +10,6 @@ module.exports = {
         "personalgrey": "#59595A",
         "darkblue" : "#1C2C4A",
         "moredarkblue" : "#012A2D"
-        //#048690
       }
     },
   },
