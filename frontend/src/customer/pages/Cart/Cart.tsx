@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CartItem from './CartItem'
 import { Close, LocalOffer } from '@mui/icons-material'
 import { Button, dividerClasses, IconButton, TextField } from '@mui/material';
+import PricingCard from './PricingCard';
 
 const primaryblue = '#048690'; // Define the primaryblue color
 
@@ -74,6 +75,9 @@ const Cart = () => {
               
               }
 
+          </div>
+          <div className='border rounded-md'>
+            <PricingCard />
           </div>
 
         </div>
