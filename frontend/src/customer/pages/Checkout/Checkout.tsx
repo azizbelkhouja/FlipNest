@@ -15,7 +15,7 @@ const Checkout = () => {
 
                 <div className="text-xs font-medium space-y-5">
                     <p>Saved Addresses</p>
-                    <div className="">
+                    <div className="space-y-3">
                         {[1,1,1].map((item) => <AddressCard />)}
                     </div>
                 </div>
