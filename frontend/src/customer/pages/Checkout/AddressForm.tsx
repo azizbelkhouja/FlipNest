@@ -1,9 +1,23 @@
 import { Box, Grid2, TextField } from '@mui/material'
-import { formik } from 'formik'
+import { useFormik } from 'formik'
 import React from 'react'
 
 const AddressForm = () => {
-    const formik = useFormik()
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            mobile: '',
+            pinCode: '',
+            address: '',
+            city: '',
+            state: '',
+            locality:""
+        },
+        validationSchema: {},
+        onSubmit: (values) => {
+            console.log(values)
+        },
+    })
 
   return (
     <Box sx={{minWidth:600, max:"auto"}}>
@@ -17,7 +31,8 @@ const AddressForm = () => {
                         label='Full Name'
                         variant='outlined'
                         value={formik.values.name}
-                        onChange={formik.touched.name && Boolean(formik.errors.name)}
+                        onChange={formik.handleChange}
+                        error={formik.touched.name && Boolean(formik.errors.name)}
                         helperText={formik.touched.name && formik.errors.name}
                     />
                 </Grid2>
