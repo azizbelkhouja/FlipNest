@@ -22,8 +22,8 @@ const AddressForm = () => {
   return (
     <Box sx={{minWidth:600, max:"auto"}}>
         <p className='text-xl font-bold text-center pb-5'>Contact Details</p>
-        <form action="">
-            <Grid2 conatiner spacing={8}>
+        <form>
+            <Grid2 container spacing={8}>
                 <Grid2 size={{xs:12}}>
                     <TextField 
                         fullWidth
