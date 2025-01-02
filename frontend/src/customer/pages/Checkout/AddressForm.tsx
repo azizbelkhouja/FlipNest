@@ -1,4 +1,4 @@
-import { Box, Grid2, TextField } from '@mui/material'
+import { Box, Button, Grid2, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import React from 'react'
 
@@ -35,6 +35,81 @@ const AddressForm = () => {
                         error={formik.touched.name && Boolean(formik.errors.name)}
                         helperText={formik.touched.name && formik.errors.name}
                     />
+
+                    <TextField 
+                        fullWidth
+                        name='mobile'
+                        label='Mobile Number'
+                        variant='outlined'
+                        value={formik.values.mobile}
+                        onChange={formik.handleChange}
+                        error={formik.touched.mobile && Boolean(formik.errors.mobile)}
+                        helperText={formik.touched.mobile && formik.errors.mobile}
+                    />
+
+                    <TextField 
+                        fullWidth
+                        name='pinCode'
+                        label='Pin Code'
+                        variant='outlined'
+                        value={formik.values.pinCode}
+                        onChange={formik.handleChange}
+                        error={formik.touched.pinCode && Boolean(formik.errors.pinCode)}
+                        helperText={formik.touched.pinCode && formik.errors.pinCode}
+                    />
+
+                    <TextField 
+                        fullWidth
+                        name='address'
+                        label='Address'
+                        variant='outlined'
+                        value={formik.values.address}
+                        onChange={formik.handleChange}
+                        error={formik.touched.address && Boolean(formik.errors.address)}
+                        helperText={formik.touched.address && formik.errors.address}
+                    />
+
+                    <TextField 
+                        fullWidth
+                        name='city'
+                        label='City'
+                        variant='outlined'
+                        value={formik.values.city}
+                        onChange={formik.handleChange}
+                        error={formik.touched.city && Boolean(formik.errors.city)}
+                        helperText={formik.touched.city && formik.errors.city}
+                    />
+
+                    <TextField 
+                        fullWidth
+                        name='state'
+                        label='State'
+                        variant='outlined'
+                        value={formik.values.state}
+                        onChange={formik.handleChange}
+                        error={formik.touched.state && Boolean(formik.errors.state)}
+                        helperText={formik.touched.state && formik.errors.state}
+                    />
+
+                    <TextField 
+                        fullWidth
+                        name='locality'
+                        label='Locality'
+                        variant='outlined'
+                        value={formik.values.locality}
+                        onChange={formik.handleChange}
+                        error={formik.touched.locality && Boolean(formik.errors.locality)}
+                        helperText={formik.touched.locality && formik.errors.locality}
+                    />
+
+                    <Button
+                        type='submit'
+                        variant='contained'
+                        color='primary'
+                        fullWidth
+                    >
+                        Submit
+                    </Button>
                 </Grid2>
             </Grid2>
         </form>
