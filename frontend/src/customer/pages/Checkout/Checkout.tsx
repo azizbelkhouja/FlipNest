@@ -14,7 +14,19 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-  
+
+const paymentGatewayList = [
+    {
+        value:"PAYPAL",
+        image:"https://w7.pngwing.com/pngs/89/683/png-transparent-paypal-logo-brand-pay-payment-money-pp-commercial-shopping-buy.png",
+        label:""
+    },
+    {
+        value:"STRIPE",
+        image:"https://vikwp.com/images/plugins/stripe.png",
+        label:""
+    }
+]
     
 const Checkout = () => {
 
@@ -49,15 +61,17 @@ const Checkout = () => {
                 <div>
                     <div className='border rounded-md'>
                         <div className="">
-                            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group" className='flex justify-between pr-0'>
+                                {
+                                    paymentGatewayList.map((item) => <FormControlLabel className='border w-[45%]' value={item.value} control={<Radio />} label= {
+                                        <img src={item.image} alt={item.label} className={`${item.value=="stripe"?"w-14":""} object-cover`} />
+                                    }/>) 
+                                }
                             </RadioGroup>
                         </div>
 
                         <PricingCard />
-                        
+
                         <div className="p-5">
                             <Button fullWidth variant='contained' sx={{py:"11px"}}>Checkout</Button>
                         </div>
