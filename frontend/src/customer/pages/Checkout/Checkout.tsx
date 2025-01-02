@@ -1,4 +1,4 @@
-import { Box, Button, Modal, Typography } from '@mui/material'
+import { Box, Button, FormControlLabel, Modal, Radio, RadioGroup, Typography } from '@mui/material'
 import React from 'react'
 import AddressCard from './AddressCard'
 import AddressForm from './AddressForm';
@@ -48,7 +48,16 @@ const Checkout = () => {
 
                 <div>
                     <div className='border rounded-md'>
+                        <div className="">
+                            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
+                                <FormControlLabel value="female" control={<Radio />} label="Female" />
+                                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                            </RadioGroup>
+                        </div>
+
                         <PricingCard />
+                        
                         <div className="p-5">
                             <Button fullWidth variant='contained' sx={{py:"11px"}}>Checkout</Button>
                         </div>
