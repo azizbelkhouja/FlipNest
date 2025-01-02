@@ -79,9 +79,9 @@ const Cart = () => {
           <div className='border rounded-md'>
             <PricingCard />
 
-              <div className="">
-                <Button fullWidth variant='contained' sx={{ backgroundColor:primaryblue, color:'white',  border: 'hidden'}}>Buy Now</Button>
-              </div>
+            <div className="p-5">
+              <Button fullWidth variant='contained' sx={{ backgroundColor:primaryblue, color:'white',  border: 'hidden'}}>Buy Now</Button>
+            </div>
 
           </div>
 
