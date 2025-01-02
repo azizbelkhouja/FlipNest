@@ -1,6 +1,17 @@
 import { Box, Button, Grid2, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import React from 'react'
+import * as Yup from "yup";
+
+const AddressFormSchema = Yup.object().shape({
+    name: Yup.string().required('Required'),
+    mobile: Yup.string().required('Required').matches(/^[0-9]+$/, 'Must be only digits').min(10, 'Must be exactly 10 digits').max(10, 'Must be exactly 10 digits'),
+    pinCode: Yup.string().required('Required').matches(/^[0-9]+$/, 'Must be only digits').min(5, 'Must be exactly 5 digits').max(5, 'Must be exactly 5 digits'),
+    address: Yup.string().required('Required'),
+    city: Yup.string().required('Required'),
+    state: Yup.string().required('Required'),
+    locality: Yup.string().required('Required')
+})
 
 const AddressForm = () => {
     const formik = useFormik({
@@ -23,8 +34,8 @@ const AddressForm = () => {
     <Box sx={{max:"auto"}}>
         <p className='text-xl font-bold text-center pb-5'>Contact Details</p>
         <form>
-            <Grid2 container spacing={8}>
-                
+            <Grid2 container spacing={3}>
+
                 <Grid2 size={{xs:12}}>
                     <TextField
                     fullWidth
@@ -38,7 +49,7 @@ const AddressForm = () => {
                     />
                 </Grid2>
 
-                <Grid2 size={{xs:12}}>
+                <Grid2 size={{xs:6}}>
                     <TextField
                     fullWidth
                     name="mobile"
@@ -51,7 +62,7 @@ const AddressForm = () => {
                     />
                 </Grid2>
 
-                <Grid2 size={{xs:12}}>
+                <Grid2 size={{xs:6}}>
                     <TextField
                     fullWidth
                     name="pinCode"
@@ -77,7 +88,7 @@ const AddressForm = () => {
                     />
                 </Grid2>
 
-                <Grid2 size={{xs:12}}>
+                <Grid2 size={{xs:6}}>
                     <TextField
                     fullWidth
                     name="city"
@@ -90,7 +101,7 @@ const AddressForm = () => {
                     />
                 </Grid2>
 
-                <Grid2 size={{xs:12}}>
+                <Grid2 size={{xs:6}}>
                     <TextField
                     fullWidth
                     name="state"
@@ -117,7 +128,7 @@ const AddressForm = () => {
                 </Grid2>
 
                 <Grid2 size={{xs:12}}>
-                    <Button type="submit" variant="contained" color="primary" fullWidth>
+                    <Button type="submit" variant="contained" color='white' fullWidth>
                     Submit
                     </Button>
                 </Grid2>
