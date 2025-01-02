@@ -24,7 +24,7 @@ const AddressForm = () => {
             state: '',
             locality:""
         },
-        validationSchema: {},
+        validationSchema: AddressFormSchema,
         onSubmit: (values) => {
             console.log(values)
         },
@@ -128,7 +128,7 @@ const AddressForm = () => {
                 </Grid2>
 
                 <Grid2 size={{xs:12}}>
-                    <Button type="submit" variant="contained" color='white' fullWidth>
+                    <Button type="submit" variant="contained" color="success" fullWidth>
                     Submit
                     </Button>
                 </Grid2>
