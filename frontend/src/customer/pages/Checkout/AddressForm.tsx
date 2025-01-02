@@ -33,7 +33,7 @@ const AddressForm = () => {
   return (
     <Box sx={{max:"auto"}}>
         <p className='text-xl font-bold text-center pb-5'>Contact Details</p>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
             <Grid2 container spacing={3}>
 
                 <Grid2 size={{xs:12}}>
@@ -128,8 +128,8 @@ const AddressForm = () => {
                 </Grid2>
 
                 <Grid2 size={{xs:12}}>
-                    <Button type="submit" variant="contained" color="success" fullWidth>
-                    Submit
+                    <Button sx={{py:"14px"}} type="submit" variant="contained" fullWidth>
+                    Add Address
                     </Button>
                 </Grid2>
                 
