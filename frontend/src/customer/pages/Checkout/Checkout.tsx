@@ -18,7 +18,7 @@ const style = {
 const paymentGatewayList = [
     {
         value:"PAYPAL",
-        image:"https://w7.pngwing.com/pngs/89/683/png-transparent-paypal-logo-brand-pay-payment-money-pp-commercial-shopping-buy.png",
+        image:"https://i.pcmag.com/imagery/reviews/068BjcjwBw0snwHIq0KNo5m-15.fit_lim.size_1050x591.v1602794215.png",
         label:""
     },
     {
