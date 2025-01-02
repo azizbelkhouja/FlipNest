@@ -63,7 +63,7 @@ const Checkout = () => {
                         <div className="">
                             <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group" className='flex justify-between pr-0'>
                                 {
-                                    paymentGatewayList.map((item) => <FormControlLabel className='border w-[45%]' value={item.value} control={<Radio />} label= {
+                                    paymentGatewayList.map((item) => <FormControlLabel className='border w-[45%] pr-2 rounded-md flex justify-center' value={item.value} control={<Radio />} label= {
                                         <img src={item.image} alt={item.label} className={`${item.value=="stripe"?"w-14":""} object-cover`} />
                                     }/>) 
                                 }
